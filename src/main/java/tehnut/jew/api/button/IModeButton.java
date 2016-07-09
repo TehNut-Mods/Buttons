@@ -10,7 +10,7 @@ import tehnut.jew.api.WidgetTexture;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public interface IModed {
+public interface IModeButton {
 
 	List<Mode> getModes();
 

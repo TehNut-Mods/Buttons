@@ -15,7 +15,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class ButtonMode extends Button implements IModed {
+public abstract class ButtonMode extends Button implements IModeButton {
 
 	private int modeIndex = 0;
 
