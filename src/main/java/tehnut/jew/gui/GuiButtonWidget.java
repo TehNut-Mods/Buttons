@@ -6,24 +6,34 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.text.Style;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import tehnut.jew.JustEnoughWidgets;
 import tehnut.jew.api.ClientHelper;
 import tehnut.jew.api.JustEnoughWidgetsAPI;
 import tehnut.jew.api.button.Button;
 import tehnut.jew.api.WidgetTexture;
+import tehnut.jew.api.button.ButtonMode;
 import tehnut.jew.network.MessageButtonClicked;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GuiButtonWidget extends GuiButton {
 
 	private final Button button;
+	private final List<String> tooltips = new ArrayList<String>();
 
 	public GuiButtonWidget(int x, int y, Button button) {
 		super(0, x, y, 20, 20, "");
 
 		this.button = button;
+		if (button.getTitle() != null)
+			tooltips.add(button.getTitle().getFormattedText());
+		if (button instanceof ButtonMode)
+			tooltips.add(new TextComponentTranslation("button.jew.mode").setStyle(new Style().setItalic(true).setColor(TextFormatting.GRAY)).getFormattedText());
 	}
 
 	@Override
@@ -45,9 +55,9 @@ public class GuiButtonWidget extends GuiButton {
 	}
 
 	public void drawButtonTooltips(int mouseX, int mouseY) {
-		if (visible && button.getTitle() != null) {
+		if (visible && !tooltips.isEmpty()) {
 			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
-			GuiUtils.drawHoveringText(Collections.singletonList(button.getTitle().getFormattedText()), mouseX, mouseY, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), -1, Minecraft.getMinecraft().fontRendererObj);
+			GuiUtils.drawHoveringText(tooltips, mouseX, mouseY, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), -1, Minecraft.getMinecraft().fontRendererObj);
 		}
 	}
 
@@ -63,5 +73,9 @@ public class GuiButtonWidget extends GuiButton {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public Button getButton() {
+		return button;
 	}
 }

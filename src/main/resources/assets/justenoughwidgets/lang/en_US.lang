@@ -8,5 +8,8 @@ button.jew.heal.feed.title=Feed
 button.jew.weather.sun.title=Set sunny
 button.jew.weather.rain.title=Set rainy
 
+# Info
+button.jew.mode=Shift Click to cycle
+
 # Chat
 chat.jew.permission.fail=You do not meet the required permission level to do that.
