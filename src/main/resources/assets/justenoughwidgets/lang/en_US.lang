@@ -3,7 +3,8 @@ button.jew.exit.title=Close screen
 button.jew.time.day.title=Set time to day
 button.jew.time.night.title=Set time to night
 button.jew.killall.title=Kill all hostiles
-button.jew.heal.title=Heal
+button.jew.heal.health.title=Heal
+button.jew.heal.feed.title=Feed
 button.jew.weather.sun.title=Set sunny
 button.jew.weather.rain.title=Set rainy
 

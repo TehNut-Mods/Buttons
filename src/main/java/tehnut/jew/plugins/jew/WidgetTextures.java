@@ -29,6 +29,22 @@ public class WidgetTextures {
 			20
 	);
 
+	public static final WidgetTexture FOOD = new WidgetTexture(
+			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
+			60,
+			20,
+			20,
+			20
+	);
+
+	public static final WidgetTexture HEART = new WidgetTexture(
+			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
+			80,
+			20,
+			20,
+			20
+	);
+
 	public static final WidgetTexture BLANK = new WidgetTexture(
 			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
 			0,
