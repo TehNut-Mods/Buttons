@@ -5,6 +5,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -42,17 +43,23 @@ public class MessageButtonClicked implements IMessage {
 	public static class Handler implements IMessageHandler<MessageButtonClicked, IMessage> {
 
 		@Override
-		public IMessage onMessage(MessageButtonClicked message, MessageContext ctx) {
-			boolean canUse = true;
-			if (message.getButton().requireElevatedPermissions())
-				canUse = ctx.getServerHandler().playerEntity.canCommandSenderUseCommand(2, "");
+		public IMessage onMessage(final MessageButtonClicked message, final MessageContext ctx) {
+			FMLCommonHandler.instance().getMinecraftServerInstance().addScheduledTask(new Runnable() {
+				@Override
+				public void run() {
+					boolean canUse = true;
+					if (message.getButton().requireElevatedPermissions())
+						canUse = ctx.getServerHandler().playerEntity.canCommandSenderUseCommand(2, "");
 
-			if (canUse) {
-				message.getButton().onServerClick(ctx.getServerHandler().playerEntity);
-				JustEnoughWidgets.LOGGER.info(message.getButton().getUseNotification(ctx.getServerHandler().playerEntity).getFormattedText());
-			} else {
-				ctx.getServerHandler().playerEntity.addChatComponentMessage(new TextComponentTranslation("chat.jew.permission.fail").setStyle(new Style().setColor(TextFormatting.RED)));
-			}
+					if (canUse) {
+						message.getButton().onServerClick(ctx.getServerHandler().playerEntity);
+						JustEnoughWidgets.LOGGER.info(message.getButton().getUseNotification(ctx.getServerHandler().playerEntity).getFormattedText());
+					} else {
+						ctx.getServerHandler().playerEntity.addChatComponentMessage(new TextComponentTranslation("chat.jew.permission.fail").setStyle(new Style().setColor(TextFormatting.RED)));
+					}
+				}
+			});
+
 			return null;
 		}
 	}
