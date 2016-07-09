@@ -13,20 +13,10 @@ public interface IWidgetPlugin {
 	 */
 	void register(IWidgetRegistry widgetRegistry);
 
-	/**
-	 * Called when JEW's runtime features are available, after all mods have been registered.
-	 */
-	void onRuntimeAvailable();
-
 	class Base implements IWidgetPlugin {
 
 		@Override
 		public void register(IWidgetRegistry widgetRegistry) {
-
-		}
-
-		@Override
-		public void onRuntimeAvailable() {
 
 		}
 	}
