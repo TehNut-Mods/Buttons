@@ -1,8 +1,8 @@
 [
 {
-  "modid": "FluxedUtilities",
-  "name": "FluxedUtilities",
-  "description": "Basic RF utility blocks and items",
+  "modid": "justenoughwidgets",
+  "name": "JustEnoughWidgets",
+  "description": "Adds widgets to the left side of the inventory screen",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "http://tehnut.info/",
