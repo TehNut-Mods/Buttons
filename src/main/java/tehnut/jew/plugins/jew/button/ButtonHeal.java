@@ -4,14 +4,14 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import tehnut.jew.plugins.jew.ButtonBase;
-import tehnut.jew.plugins.jew.ButtonTextures;
+import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nullable;
 
 public class ButtonHeal extends ButtonBase {
 
 	public ButtonHeal() {
-		super(ButtonTextures.BUTTON_NIGHT, "button_heal");
+		super(WidgetTextures.BUTTON_NIGHT, "button_heal");
 
 		setServerRequired();
 	}

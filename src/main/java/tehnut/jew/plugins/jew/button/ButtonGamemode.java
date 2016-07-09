@@ -6,7 +6,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.GameType;
 import tehnut.jew.plugins.jew.ButtonModeBase;
-import tehnut.jew.plugins.jew.ButtonTextures;
+import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -15,7 +15,7 @@ public class ButtonGamemode extends ButtonModeBase {
 
 	private final List<Mode> modes = ImmutableList.of(
 			// SURVIVAL
-			new Mode(ButtonTextures.BUTTON_DAY, this) {
+			new Mode(WidgetTextures.BUTTON_DAY, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
 					player.setGameType(GameType.SURVIVAL);
@@ -29,7 +29,7 @@ public class ButtonGamemode extends ButtonModeBase {
 				}
 			},
 			// CREATIVE
-			new Mode(ButtonTextures.BUTTON_EXIT, this) {
+			new Mode(WidgetTextures.BUTTON_EXIT, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
 					player.setGameType(GameType.CREATIVE);
@@ -43,7 +43,7 @@ public class ButtonGamemode extends ButtonModeBase {
 				}
 			},
 			// ADVENTURE
-			new Mode(ButtonTextures.BUTTON_NIGHT, this) {
+			new Mode(WidgetTextures.BUTTON_NIGHT, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
 					player.setGameType(GameType.ADVENTURE);
@@ -57,7 +57,7 @@ public class ButtonGamemode extends ButtonModeBase {
 				}
 			},
 			// SPECTATOR
-			new Mode(ButtonTextures.BUTTON_EXIT, this) {
+			new Mode(WidgetTextures.BUTTON_EXIT, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
 					player.setGameType(GameType.SPECTATOR);

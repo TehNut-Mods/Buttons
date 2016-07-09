@@ -3,7 +3,7 @@ package tehnut.jew.plugins.jew;
 import net.minecraft.util.ResourceLocation;
 import tehnut.jew.api.WidgetTexture;
 
-public class ButtonTextures {
+public class WidgetTextures {
 
 	public static final WidgetTexture BUTTON_EXIT = new WidgetTexture(
 			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),

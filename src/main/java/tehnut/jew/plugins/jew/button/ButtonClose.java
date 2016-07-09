@@ -7,14 +7,14 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.jew.plugins.jew.ButtonBase;
-import tehnut.jew.plugins.jew.ButtonTextures;
+import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nullable;
 
 public class ButtonClose extends ButtonBase {
 
 	public ButtonClose() {
-		super(ButtonTextures.BUTTON_EXIT, "button_exit");
+		super(WidgetTextures.BUTTON_EXIT, "button_exit");
 	}
 
 	@Override

@@ -12,7 +12,7 @@ public class ButtonModeBase extends ButtonMode {
 	private List<Mode> modes;
 
 	public ButtonModeBase(String id) {
-		super(ButtonTextures.BLANK);
+		super(WidgetTextures.BLANK);
 
 		this.id = id;
 	}

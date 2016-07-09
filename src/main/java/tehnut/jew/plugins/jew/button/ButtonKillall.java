@@ -7,14 +7,14 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import tehnut.jew.plugins.jew.ButtonBase;
-import tehnut.jew.plugins.jew.ButtonTextures;
+import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nullable;
 
 public class ButtonKillall extends ButtonBase {
 
 	public ButtonKillall() {
-		super(ButtonTextures.BUTTON_EXIT, "button_killall");
+		super(WidgetTextures.BUTTON_EXIT, "button_killall");
 
 		setServerRequired();
 	}

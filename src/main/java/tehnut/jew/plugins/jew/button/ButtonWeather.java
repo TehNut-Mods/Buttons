@@ -10,41 +10,43 @@ import tehnut.jew.plugins.jew.WidgetTextures;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ButtonTime extends ButtonModeBase {
+public class ButtonWeather extends ButtonModeBase {
 
-	private final List<Mode> modes = ImmutableList.of(
-			// DAY
+	private List<Mode> modes = ImmutableList.of(
+			// SUN
 			new Mode(WidgetTextures.BUTTON_DAY, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
-					player.getEntityWorld().setWorldTime(1000);
+					player.getEntityWorld().getWorldInfo().setCleanWeatherTime(Integer.MAX_VALUE);
+					player.getEntityWorld().getWorldInfo().setRaining(false);
 				}
 
 				@Nullable
 				@Override
 				public ITextComponent getTitle() {
-					return new TextComponentTranslation("button.jew.time.day.title");
+					return new TextComponentTranslation("button.jew.weather.sun.title");
 				}
 			},
-			// NIGHT
+			// RAIN
 			new Mode(WidgetTextures.BUTTON_NIGHT, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
-					player.getEntityWorld().setWorldTime(13000);
+					player.getEntityWorld().getWorldInfo().setCleanWeatherTime(0);
+					player.getEntityWorld().getWorldInfo().setRaining(true);
 				}
 
 				@Nullable
 				@Override
 				public ITextComponent getTitle() {
-					return new TextComponentTranslation("button.jew.time.night.title");
+					return new TextComponentTranslation("button.jew.weather.rain.title");
 				}
 			}
 	);
 
-	public ButtonTime() {
-		super("button_time");
+	public ButtonWeather() {
+		super("button_weather");
 
-		setModes(modes);
 		setServerRequired();
+		setModes(modes);
 	}
 }
