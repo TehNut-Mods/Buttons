@@ -4,10 +4,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.jew.api.ClientHelper;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 /**
@@ -66,21 +68,37 @@ public abstract class Button {
 	}
 
 	/**
+	 * A message to print to console if {@link #isServerRequired()} is true and usage was successful.
+	 *
+	 * Used to inform server owners of people using server functionality.
+	 *
+	 * @param player - The player who has clicked on the button.
+	 *
+	 * @return a message to print to console.
+	 */
+	@Nonnull
+	public ITextComponent getUseNotification(EntityPlayerMP player) {
+		return new TextComponentString(String.format("%s used the %s button.", player.getDisplayNameString(), getButtonId()));
+	}
+
+	/**
 	 * Marks this button as one which requires server interaction to function.
 	 *
 	 * e.g. Healing the player.
 	 *
 	 * @return self for chaining.
 	 */
-	protected Button setServerRequired() {
+	protected final Button setServerRequired() {
 		this.serverRequired = true;
 		return this;
 	}
 
 	/**
+	 * Queried when the client clicks on the button.
+	 *
 	 * @return whether this button requires server interaction.
 	 */
-	public boolean isServerRequired() {
+	public final boolean isServerRequired() {
 		return serverRequired;
 	}
 

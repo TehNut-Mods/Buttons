@@ -49,7 +49,7 @@ public class MessageButtonClicked implements IMessage {
 
 			if (canUse) {
 				message.getButton().onServerClick(ctx.getServerHandler().playerEntity);
-				JustEnoughWidgets.LOGGER.info("{} used the {} button.", ctx.getServerHandler().playerEntity.getDisplayNameString(), message.getButton().getButtonId());
+				JustEnoughWidgets.LOGGER.info(message.getButton().getUseNotification(ctx.getServerHandler().playerEntity));
 			} else {
 				ctx.getServerHandler().playerEntity.addChatComponentMessage(new TextComponentTranslation("chat.jew.permission.fail").setStyle(new Style().setColor(TextFormatting.RED)));
 			}
