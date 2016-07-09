@@ -3,7 +3,7 @@ package tehnut.jew.plugins.jew.button;
 import com.google.common.base.Predicates;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.monster.IMob;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import tehnut.jew.plugins.jew.ButtonBase;
@@ -20,7 +20,7 @@ public class ButtonKillall extends ButtonBase {
 	}
 
 	@Override
-	public void onServerClick(EntityPlayer player) {
+	public void onServerClick(EntityPlayerMP player) {
 		for (EntityLiving living : player.getEntityWorld().getEntities(EntityLiving.class, Predicates.instanceOf(IMob.class)))
 			living.setDead();
 	}

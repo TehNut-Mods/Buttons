@@ -1,13 +1,12 @@
 package tehnut.jew.api.button;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.jew.api.ClientHelper;
-import tehnut.jew.api.JustEnoughWidgetsAPI;
 
 import javax.annotation.Nullable;
 
@@ -38,7 +37,7 @@ public abstract class Button {
 	 *
 	 * @param player - The player who clicked on the button.
 	 */
-	public void onServerClick(EntityPlayer player) {
+	public void onServerClick(EntityPlayerMP player) {
 
 	}
 
