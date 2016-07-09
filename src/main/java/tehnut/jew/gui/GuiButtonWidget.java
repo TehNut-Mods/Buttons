@@ -1,10 +1,13 @@
 package tehnut.jew.gui;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -24,16 +27,11 @@ import java.util.List;
 public class GuiButtonWidget extends GuiButton {
 
 	private final Button button;
-	private final List<String> tooltips = new ArrayList<String>();
 
 	public GuiButtonWidget(int x, int y, Button button) {
 		super(0, x, y, 20, 20, "");
 
 		this.button = button;
-		if (button.getTitle() != null)
-			tooltips.add(button.getTitle().getFormattedText());
-		if (button instanceof ButtonMode)
-			tooltips.add(new TextComponentTranslation("button.jew.mode").setStyle(new Style().setItalic(true).setColor(TextFormatting.GRAY)).getFormattedText());
 	}
 
 	@Override
@@ -55,17 +53,30 @@ public class GuiButtonWidget extends GuiButton {
 	}
 
 	public void drawButtonTooltips(int mouseX, int mouseY) {
-		if (visible && !tooltips.isEmpty()) {
+		if (visible && getButton().getTitle() != null) {
 			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
+			List<String> tooltips = new ArrayList<String>();
+			tooltips.add(getButton().getTitle().getFormattedText());
+			if (getButton() instanceof ButtonMode)
+				tooltips.add(new TextComponentTranslation("button.jew.mode").setStyle(new Style().setItalic(true).setColor(TextFormatting.GRAY)).getFormattedText());
 			GuiUtils.drawHoveringText(tooltips, mouseX, mouseY, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), -1, Minecraft.getMinecraft().fontRendererObj);
 		}
+	}
+
+	@Override
+	public void playPressSound(SoundHandler soundHandlerIn) {
+		// No-op
 	}
 
 	@Override
 	public void mouseReleased(int mouseX, int mouseY) {
 		super.mouseReleased(mouseX, mouseY);
 
+		if (!isMouseOver())
+			return;
+
 		EnumActionResult result = button.onClientClick(mouseX, mouseY);
+		Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 
 		if (result == EnumActionResult.SUCCESS && button.isServerRequired())
 			JustEnoughWidgets.NETWORK_INSTANCE.sendToServer(new MessageButtonClicked(button));

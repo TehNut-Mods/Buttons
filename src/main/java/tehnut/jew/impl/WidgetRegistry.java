@@ -23,9 +23,6 @@ public class WidgetRegistry implements IWidgetRegistry {
 
 	@Override
 	public void addButton(Button button) {
-		if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER && !button.isServerRequired())
-			return;
-
 		buttons.put(button.getButtonId(), button);
 	}
 
