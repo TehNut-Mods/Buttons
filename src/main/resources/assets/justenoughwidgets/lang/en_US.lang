@@ -1,0 +1,8 @@
+# Buttons
+button.jew.exit.title=Close screen
+button.jew.day.title=Set time to day
+button.jew.night.title=Set time to night
+button.jew.killall.title=Kill all hostiles
+
+# Chat
+chat.jew.permission.fail=You do not meet the required permission level to do that.

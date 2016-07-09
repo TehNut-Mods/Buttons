@@ -1,0 +1,25 @@
+package tehnut.jew.plugins.test;
+
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import tehnut.jew.plugins.jew.ButtonBase;
+import tehnut.jew.plugins.jew.ButtonTextures;
+
+import javax.annotation.Nullable;
+
+public class ButtonTest extends ButtonBase {
+
+	private int id;
+
+	public ButtonTest(int i) {
+		super(ButtonTextures.BUTTON_DAY, "button_test" + i);
+
+		this.id = i;
+	}
+
+	@Nullable
+	@Override
+	public ITextComponent getTitle() {
+		return new TextComponentString("Test button " + id);
+	}
+}

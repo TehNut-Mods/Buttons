@@ -1,0 +1,16 @@
+[
+{
+  "modid": "FluxedUtilities",
+  "name": "FluxedUtilities",
+  "description": "Basic RF utility blocks and items",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://tehnut.info/",
+  "updateUrl": "http://tehnut.info/",
+  "authorList": [ "TehNut" ],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
