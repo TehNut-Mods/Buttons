@@ -1,6 +1,7 @@
 package tehnut.jew.plugins.jew.button;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -18,8 +19,9 @@ public class ButtonClose extends ButtonBase {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void onClientClick(int mouseX, int mouseY) {
+	public EnumActionResult onClientClick(int mouseX, int mouseY) {
 		Minecraft.getMinecraft().displayGuiScreen(null);
+		return EnumActionResult.SUCCESS;
 	}
 
 	@Nullable

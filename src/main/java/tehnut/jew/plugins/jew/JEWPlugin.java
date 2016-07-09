@@ -15,5 +15,6 @@ public class JEWPlugin extends IWidgetPlugin.Base {
 		widgetRegistry.addButton(new ButtonNight());
 		widgetRegistry.addButton(new ButtonKillall());
 		widgetRegistry.addButton(new ButtonHeal());
+		widgetRegistry.addButton(new ButtonGamemode());
 	}
 }

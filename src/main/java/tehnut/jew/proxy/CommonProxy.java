@@ -47,6 +47,7 @@ public class CommonProxy {
 					JustEnoughWidgets.LOGGER.info("Registered plugin {} in {}", plugin.getClass().getCanonicalName(), stopwatch.stop());
 				} catch (Exception e) {
 					JustEnoughWidgets.LOGGER.error("Error loading plugin {}: {}", plugin.getClass().getCanonicalName(), e.getLocalizedMessage());
+					e.printStackTrace();
 				}
 			}
 		}

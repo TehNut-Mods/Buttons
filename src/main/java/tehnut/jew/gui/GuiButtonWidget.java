@@ -5,6 +5,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.util.EnumActionResult;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import tehnut.jew.JustEnoughWidgets;
 import tehnut.jew.api.ClientHelper;
@@ -54,9 +55,9 @@ public class GuiButtonWidget extends GuiButton {
 	public void mouseReleased(int mouseX, int mouseY) {
 		super.mouseReleased(mouseX, mouseY);
 
-		button.onClientClick(mouseX, mouseY);
+		EnumActionResult result = button.onClientClick(mouseX, mouseY);
 
-		if (button.isServerRequired())
+		if (result == EnumActionResult.SUCCESS && button.isServerRequired())
 			JustEnoughWidgets.NETWORK_INSTANCE.sendToServer(new MessageButtonClicked(button));
 	}
 

@@ -2,6 +2,7 @@ package tehnut.jew.api.button;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
@@ -28,10 +29,16 @@ public abstract class Button {
 
 	/**
 	 * Called when the player clicks on the button.
+	 *
+	 * {@link EnumActionResult#SUCCESS} will forward the call to the server if necessary.
+	 * {@link EnumActionResult#FAIL} will not forward the call to the server.
+	 * {@link EnumActionResult#PASS} will not forward the call to the server.
+	 *
+	 * @return the result of this call.
 	 */
 	@SideOnly(Side.CLIENT)
-	public void onClientClick(int mouseX, int mouseY) {
-
+	public EnumActionResult onClientClick(int mouseX, int mouseY) {
+		return EnumActionResult.SUCCESS;
 	}
 
 	/**
@@ -51,8 +58,8 @@ public abstract class Button {
 	 */
 	@SideOnly(Side.CLIENT)
 	public void drawButton(int x, int y) {
-		minecraft.renderEngine.bindTexture(buttonTexture.getTextureLocation());
-		ClientHelper.drawTexture(1, x, y, buttonTexture);
+		minecraft.renderEngine.bindTexture(getButtonTexture().getTextureLocation());
+		ClientHelper.drawTexture(1, x, y, getButtonTexture());
 	}
 
 	/**

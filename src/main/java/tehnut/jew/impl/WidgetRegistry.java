@@ -22,6 +22,7 @@ public class WidgetRegistry implements IWidgetRegistry {
 	@Override
 	public void addButton(Button button) {
 		buttons.put(button.getButtonId(), button);
+		System.out.println(button.getButtonId());
 	}
 
 	public Map<ResourceLocation, Button> getButtons() {
