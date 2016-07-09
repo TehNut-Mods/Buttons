@@ -2,6 +2,8 @@ package tehnut.jew.impl;
 
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
 import tehnut.jew.api.IWidgetRegistry;
 import tehnut.jew.api.button.Button;
 
@@ -21,8 +23,10 @@ public class WidgetRegistry implements IWidgetRegistry {
 
 	@Override
 	public void addButton(Button button) {
+		if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER && !button.isServerRequired())
+			return;
+
 		buttons.put(button.getButtonId(), button);
-		System.out.println(button.getButtonId());
 	}
 
 	public Map<ResourceLocation, Button> getButtons() {
