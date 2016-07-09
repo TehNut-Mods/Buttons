@@ -5,6 +5,7 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import tehnut.jew.api.WidgetTexture;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -19,10 +20,10 @@ public interface IModed {
 
 	class Mode {
 
-		private final ButtonTexture modeTexture;
+		private final WidgetTexture modeTexture;
 		private final Button parent;
 
-		public Mode(ButtonTexture modeTexture, Button parent) {
+		public Mode(WidgetTexture modeTexture, Button parent) {
 			this.modeTexture = modeTexture;
 			this.parent = parent;
 		}
@@ -41,7 +42,7 @@ public interface IModed {
 			return null;
 		}
 
-		public ButtonTexture getModeTexture() {
+		public WidgetTexture getModeTexture() {
 			return modeTexture;
 		}
 

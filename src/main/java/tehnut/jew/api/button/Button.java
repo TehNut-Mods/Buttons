@@ -9,6 +9,7 @@ import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.jew.api.ClientHelper;
+import tehnut.jew.api.WidgetTexture;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -18,13 +19,13 @@ import javax.annotation.Nullable;
  */
 public abstract class Button {
 
-	private final ButtonTexture buttonTexture;
+	private final WidgetTexture widgetTexture;
 	@SideOnly(Side.CLIENT)
 	protected final Minecraft minecraft = Minecraft.getMinecraft();
 	private boolean serverRequired = false;
 
-	public Button(ButtonTexture buttonTexture) {
-		this.buttonTexture = buttonTexture;
+	public Button(WidgetTexture widgetTexture) {
+		this.widgetTexture = widgetTexture;
 	}
 
 	/**
@@ -51,15 +52,15 @@ public abstract class Button {
 	}
 
 	/**
-	 * Draws the {@link #buttonTexture} onto the button background.
+	 * Draws the {@link #widgetTexture} onto the button background.
 	 *
 	 * @param x - The x location to draw the texture at.
 	 * @param y - The y location to draw the texture at.
 	 */
 	@SideOnly(Side.CLIENT)
 	public void drawButton(int x, int y) {
-		minecraft.renderEngine.bindTexture(getButtonTexture().getTextureLocation());
-		ClientHelper.drawTexture(1, x, y, getButtonTexture());
+		minecraft.renderEngine.bindTexture(getWidgetTexture().getTextureLocation());
+		ClientHelper.drawTexture(1, x, y, getWidgetTexture());
 	}
 
 	/**
@@ -121,8 +122,8 @@ public abstract class Button {
 		return false;
 	}
 
-	public ButtonTexture getButtonTexture() {
-		return buttonTexture;
+	public WidgetTexture getWidgetTexture() {
+		return widgetTexture;
 	}
 
 	/**

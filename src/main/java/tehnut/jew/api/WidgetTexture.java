@@ -1,4 +1,4 @@
-package tehnut.jew.api.button;
+package tehnut.jew.api;
 
 import net.minecraft.util.ResourceLocation;
 
@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
  *
  * This class is a utility for mapping a box on a sheet to a specific texture.
  */
-public class ButtonTexture {
+public class WidgetTexture {
 
 	private final ResourceLocation textureLocation;
 	private final int textureX;
@@ -15,7 +15,7 @@ public class ButtonTexture {
 	private final int textureWidth;
 	private final int textureHeight;
 
-	public ButtonTexture(ResourceLocation textureLocation, int textureX, int textureY, int textureWidth, int textureHeight) {
+	public WidgetTexture(ResourceLocation textureLocation, int textureX, int textureY, int textureWidth, int textureHeight) {
 		this.textureLocation = textureLocation;
 		this.textureX = textureX;
 		this.textureY = textureY;

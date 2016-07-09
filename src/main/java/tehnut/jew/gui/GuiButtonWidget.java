@@ -11,7 +11,7 @@ import tehnut.jew.JustEnoughWidgets;
 import tehnut.jew.api.ClientHelper;
 import tehnut.jew.api.JustEnoughWidgetsAPI;
 import tehnut.jew.api.button.Button;
-import tehnut.jew.api.button.ButtonTexture;
+import tehnut.jew.api.WidgetTexture;
 import tehnut.jew.network.MessageButtonClicked;
 
 import java.util.Collections;
@@ -35,7 +35,7 @@ public class GuiButtonWidget extends GuiButton {
 			GlStateManager.enableBlend();
 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 			GlStateManager.disableLighting();
-			ButtonTexture background = JustEnoughWidgetsAPI.BUTTON_BACKGROUND_DEFAULT;
+			WidgetTexture background = JustEnoughWidgetsAPI.BUTTON_BACKGROUND_DEFAULT;
 			if (hovered)
 				background = JustEnoughWidgetsAPI.BUTTON_BACKGROUND_ACTIVE;
 			mc.renderEngine.bindTexture(background.getTextureLocation());

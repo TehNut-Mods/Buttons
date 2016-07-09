@@ -2,14 +2,14 @@ package tehnut.jew.plugins.jew;
 
 import net.minecraft.util.ResourceLocation;
 import tehnut.jew.api.button.Button;
-import tehnut.jew.api.button.ButtonTexture;
+import tehnut.jew.api.WidgetTexture;
 
 public class ButtonBase extends Button {
 
 	private final String id;
 
-	public ButtonBase(ButtonTexture buttonTexture, String id) {
-		super(buttonTexture);
+	public ButtonBase(WidgetTexture widgetTexture, String id) {
+		super(widgetTexture);
 
 		this.id = id;
 	}

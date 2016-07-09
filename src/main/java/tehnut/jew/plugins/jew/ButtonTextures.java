@@ -1,11 +1,11 @@
 package tehnut.jew.plugins.jew;
 
 import net.minecraft.util.ResourceLocation;
-import tehnut.jew.api.button.ButtonTexture;
+import tehnut.jew.api.WidgetTexture;
 
 public class ButtonTextures {
 
-	public static final ButtonTexture BUTTON_EXIT = new ButtonTexture(
+	public static final WidgetTexture BUTTON_EXIT = new WidgetTexture(
 			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
 			0,
 			20,
@@ -13,7 +13,7 @@ public class ButtonTextures {
 			20
 			);
 
-	public static final ButtonTexture BUTTON_DAY = new ButtonTexture(
+	public static final WidgetTexture BUTTON_DAY = new WidgetTexture(
 			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
 			20,
 			20,
@@ -21,7 +21,7 @@ public class ButtonTextures {
 			20
 	);
 
-	public static final ButtonTexture BUTTON_NIGHT = new ButtonTexture(
+	public static final WidgetTexture BUTTON_NIGHT = new WidgetTexture(
 			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
 			40,
 			20,
@@ -29,7 +29,7 @@ public class ButtonTextures {
 			20
 	);
 
-	public static final ButtonTexture BLANK = new ButtonTexture(
+	public static final WidgetTexture BLANK = new WidgetTexture(
 			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
 			0,
 			0,

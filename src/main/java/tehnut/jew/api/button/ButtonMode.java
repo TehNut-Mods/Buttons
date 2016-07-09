@@ -1,6 +1,5 @@
 package tehnut.jew.api.button;
 
-import com.google.common.collect.Lists;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.ResourceLocation;
@@ -10,6 +9,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 import tehnut.jew.api.ClientHelper;
+import tehnut.jew.api.WidgetTexture;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -19,8 +19,8 @@ public abstract class ButtonMode extends Button implements IModed {
 
 	private int modeIndex = 0;
 
-	public ButtonMode(ButtonTexture buttonTexture) {
-		super(buttonTexture);
+	public ButtonMode(WidgetTexture widgetTexture) {
+		super(widgetTexture);
 	}
 
 	@Override
