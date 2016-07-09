@@ -2,17 +2,16 @@ package tehnut.jew.plugins.jew.button;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.GameType;
-import tehnut.jew.api.button.ButtonModed;
+import tehnut.jew.plugins.jew.ButtonModeBase;
 import tehnut.jew.plugins.jew.ButtonTextures;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class ButtonGamemode extends ButtonModed {
+public class ButtonGamemode extends ButtonModeBase {
 
 	private final List<Mode> modes = ImmutableList.of(
 			// SURVIVAL
@@ -74,23 +73,9 @@ public class ButtonGamemode extends ButtonModed {
 	);
 
 	public ButtonGamemode() {
-		super(ButtonTextures.BUTTON_NIGHT);
+		super("button_gamemode");
 
+		setModes(modes);
 		setServerRequired();
-	}
-
-	@Override
-	public boolean requireElevatedPermissions() {
-		return true;
-	}
-
-	@Override
-	public List<Mode> getModes() {
-		return modes;
-	}
-
-	@Override
-	public ResourceLocation getButtonId() {
-		return new ResourceLocation("justenoughwidgets", "button_gamemode");
 	}
 }

@@ -15,11 +15,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public abstract class ButtonModed extends Button implements IModed {
+public abstract class ButtonMode extends Button implements IModed {
 
 	private int modeIndex = 0;
 
-	public ButtonModed(ButtonTexture buttonTexture) {
+	public ButtonMode(ButtonTexture buttonTexture) {
 		super(buttonTexture);
 	}
 

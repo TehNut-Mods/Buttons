@@ -11,10 +11,9 @@ public class JEWPlugin extends IWidgetPlugin.Base {
 	@Override
 	public void register(IWidgetRegistry widgetRegistry) {
 		widgetRegistry.addButton(new ButtonClose());
-		widgetRegistry.addButton(new ButtonDay());
-		widgetRegistry.addButton(new ButtonNight());
 		widgetRegistry.addButton(new ButtonKillall());
 		widgetRegistry.addButton(new ButtonHeal());
 		widgetRegistry.addButton(new ButtonGamemode());
+		widgetRegistry.addButton(new ButtonTime());
 	}
 }

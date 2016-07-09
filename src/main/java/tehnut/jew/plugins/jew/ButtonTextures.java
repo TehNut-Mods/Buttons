@@ -28,4 +28,12 @@ public class ButtonTextures {
 			20,
 			20
 	);
+
+	public static final ButtonTexture BLANK = new ButtonTexture(
+			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
+			0,
+			0,
+			0,
+			0
+	);
 }
