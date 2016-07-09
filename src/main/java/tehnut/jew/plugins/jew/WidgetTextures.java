@@ -13,25 +13,9 @@ public class WidgetTextures {
 			20
 			);
 
-	public static final WidgetTexture BUTTON_DAY = new WidgetTexture(
-			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
-			20,
-			20,
-			20,
-			20
-	);
-
-	public static final WidgetTexture BUTTON_NIGHT = new WidgetTexture(
-			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
-			40,
-			20,
-			20,
-			20
-	);
-
 	public static final WidgetTexture FOOD = new WidgetTexture(
 			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
-			60,
+			20,
 			20,
 			20,
 			20
@@ -39,7 +23,39 @@ public class WidgetTextures {
 
 	public static final WidgetTexture HEART = new WidgetTexture(
 			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
+			40,
+			20,
+			20,
+			20
+	);
+
+	public static final WidgetTexture DAWN = new WidgetTexture(
+			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
+			60,
+			20,
+			20,
+			20
+	);
+
+	public static final WidgetTexture DAY = new WidgetTexture(
+			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
 			80,
+			20,
+			20,
+			20
+	);
+
+	public static final WidgetTexture DUSK = new WidgetTexture(
+			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
+			100,
+			20,
+			20,
+			20
+	);
+
+	public static final WidgetTexture NIGHT = new WidgetTexture(
+			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
+			120,
 			20,
 			20,
 			20

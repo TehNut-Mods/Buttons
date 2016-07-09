@@ -15,7 +15,7 @@ public class ButtonGamemode extends ButtonModeBase {
 
 	private final List<Mode> modes = ImmutableList.of(
 			// SURVIVAL
-			new Mode(WidgetTextures.BUTTON_DAY, this) {
+			new Mode(WidgetTextures.DAY, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
 					player.setGameType(GameType.SURVIVAL);
@@ -43,7 +43,7 @@ public class ButtonGamemode extends ButtonModeBase {
 				}
 			},
 			// ADVENTURE
-			new Mode(WidgetTextures.BUTTON_NIGHT, this) {
+			new Mode(WidgetTextures.NIGHT, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
 					player.setGameType(GameType.ADVENTURE);

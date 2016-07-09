@@ -1,6 +1,8 @@
 # Buttons
 button.jew.exit.title=Close screen
+button.jew.time.dawn.title=Set time to dawn
 button.jew.time.day.title=Set time to day
+button.jew.time.dusk.title=Set time to dusk
 button.jew.time.night.title=Set time to night
 button.jew.killall.title=Kill all hostiles
 button.jew.heal.health.title=Heal

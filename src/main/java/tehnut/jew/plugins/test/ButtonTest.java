@@ -12,7 +12,7 @@ public class ButtonTest extends ButtonBase {
 	private int id;
 
 	public ButtonTest(int i) {
-		super(WidgetTextures.BUTTON_DAY, "button_test" + i);
+		super(WidgetTextures.DAY, "button_test" + i);
 
 		this.id = i;
 	}

@@ -13,11 +13,24 @@ import java.util.List;
 public class ButtonTime extends ButtonModeBase {
 
 	private final List<Mode> modes = ImmutableList.of(
-			// DAY
-			new Mode(WidgetTextures.BUTTON_DAY, this) {
+			// DAWN
+			new Mode(WidgetTextures.DAWN, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
-					player.getEntityWorld().setWorldTime(1000);
+					player.getEntityWorld().setWorldTime(23000);
+				}
+
+				@Nullable
+				@Override
+				public ITextComponent getTitle() {
+					return new TextComponentTranslation("button.jew.time.dawn.title");
+				}
+			},
+			// DAY
+			new Mode(WidgetTextures.DAY, this) {
+				@Override
+				public void onServerClick(EntityPlayerMP player) {
+					player.getEntityWorld().setWorldTime(6000);
 				}
 
 				@Nullable
@@ -26,11 +39,24 @@ public class ButtonTime extends ButtonModeBase {
 					return new TextComponentTranslation("button.jew.time.day.title");
 				}
 			},
-			// NIGHT
-			new Mode(WidgetTextures.BUTTON_NIGHT, this) {
+			// DUSK
+			new Mode(WidgetTextures.DUSK, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
 					player.getEntityWorld().setWorldTime(13000);
+				}
+
+				@Nullable
+				@Override
+				public ITextComponent getTitle() {
+					return new TextComponentTranslation("button.jew.time.dusk.title");
+				}
+			},
+			// NIGHT
+			new Mode(WidgetTextures.NIGHT, this) {
+				@Override
+				public void onServerClick(EntityPlayerMP player) {
+					player.getEntityWorld().setWorldTime(18000);
 				}
 
 				@Nullable

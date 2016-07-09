@@ -14,7 +14,7 @@ public class ButtonWeather extends ButtonModeBase {
 
 	private List<Mode> modes = ImmutableList.of(
 			// SUN
-			new Mode(WidgetTextures.BUTTON_DAY, this) {
+			new Mode(WidgetTextures.DAY, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
 					player.getEntityWorld().getWorldInfo().setCleanWeatherTime(Integer.MAX_VALUE);
@@ -28,7 +28,7 @@ public class ButtonWeather extends ButtonModeBase {
 				}
 			},
 			// RAIN
-			new Mode(WidgetTextures.BUTTON_NIGHT, this) {
+			new Mode(WidgetTextures.NIGHT, this) {
 				@Override
 				public void onServerClick(EntityPlayerMP player) {
 					player.getEntityWorld().getWorldInfo().setCleanWeatherTime(0);
