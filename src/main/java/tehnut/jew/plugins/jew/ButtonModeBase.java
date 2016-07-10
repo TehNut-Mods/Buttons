@@ -9,10 +9,16 @@ public class ButtonModeBase<T extends Enum<T> & IMode> extends ButtonMode<T> {
 
 	private final String name;
 
-	public ButtonModeBase(Class<T> enumClass, String name) {
+	public ButtonModeBase(Class<T> enumClass, String name, boolean serverRequired) {
 		super(WidgetTextures.BLANK, enumClass);
-
 		this.name = name;
+
+		if (serverRequired)
+			setServerRequired();
+	}
+
+	public ButtonModeBase(Class<T> enumClass, String name) {
+		this(enumClass, name, false);
 	}
 
 	@Override
