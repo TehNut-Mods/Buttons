@@ -59,14 +59,12 @@ public class ButtonListOverlay implements IButtonListOverlay {
 	}
 
 	public void drawScreenPost(GuiScreen screen, List<GuiButton> buttons, int mouseX, int mouseY) {
-		if (isOpen()) {
-			for (GuiButton button : buttons) {
-				if (button instanceof GuiButtonWidget && button.isMouseOver()) {
-					int modMouseY = mouseY;
-					if (modMouseY < 16)
-						modMouseY += 16 - modMouseY;
-					((GuiButtonWidget) button).drawButtonTooltips(mouseX, modMouseY);
-				}
+		for (GuiButton button : buttons) {
+			if (button instanceof GuiButtonWidget && button.isMouseOver()) {
+				int modMouseY = mouseY;
+				if (modMouseY < 16)
+					modMouseY += 16 - modMouseY;
+				((GuiButtonWidget) button).drawButtonTooltips(mouseX, modMouseY);
 			}
 		}
 	}

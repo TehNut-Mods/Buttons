@@ -7,19 +7,16 @@ import tehnut.jew.gui.ButtonListOverlay;
 
 public class ClientHandler {
 
-	private ButtonListOverlay buttonListOverlay;
+	private ButtonListOverlay buttonListOverlay = new ButtonListOverlay();
 
 	@SubscribeEvent
 	public void onGuiInitPost(GuiScreenEvent.InitGuiEvent.Post event) {
-		if (event.getGui() instanceof GuiContainer) {
-			buttonListOverlay = new ButtonListOverlay();
+		if (event.getGui() instanceof GuiContainer)
 			buttonListOverlay.init(event.getGui());
-		}
 	}
 
 	@SubscribeEvent
 	public void onGuiDrawPost(GuiScreenEvent.DrawScreenEvent.Post event) {
-		if (buttonListOverlay != null)
 			buttonListOverlay.drawScreenPost(event.getGui(), event.getGui().buttonList, event.getMouseX(), event.getMouseY());
 	}
 
