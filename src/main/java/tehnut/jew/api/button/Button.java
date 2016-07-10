@@ -119,7 +119,7 @@ public abstract class Button {
 	 * @return whether this button requires elevated permissions
 	 */
 	public boolean requireElevatedPermissions() {
-		return false;
+		return isServerRequired();
 	}
 
 	public WidgetTexture getWidgetTexture() {
