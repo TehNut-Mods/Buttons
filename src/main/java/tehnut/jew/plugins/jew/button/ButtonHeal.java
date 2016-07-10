@@ -1,50 +1,67 @@
 package tehnut.jew.plugins.jew.button;
 
-import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import tehnut.jew.api.WidgetTexture;
+import tehnut.jew.api.button.IMode;
 import tehnut.jew.plugins.jew.ButtonModeBase;
 import tehnut.jew.plugins.jew.WidgetTextures;
 
-import javax.annotation.Nullable;
-import java.util.List;
+import javax.annotation.Nonnull;
 
-public class ButtonHeal extends ButtonModeBase {
-
-	private List<Mode> modes = ImmutableList.of(
-			// HEALTH
-			new Mode(WidgetTextures.HEART, this) {
-				@Override
-				public void onServerClick(EntityPlayerMP player) {
-					player.setHealth(player.getMaxHealth());
-				}
-
-				@Nullable
-				@Override
-				public ITextComponent getTitle() {
-					return new TextComponentTranslation("button.jew.heal.health.title");
-				}
-			},
-			// FOOD
-			new Mode(WidgetTextures.FOOD, this) {
-				@Override
-				public void onServerClick(EntityPlayerMP player) {
-					player.getFoodStats().addStats(20, 2.0F);
-				}
-
-				@Nullable
-				@Override
-				public ITextComponent getTitle() {
-					return new TextComponentTranslation("button.jew.heal.feed.title");
-				}
-			}
-	);
+public class ButtonHeal extends ButtonModeBase<ButtonHeal.ButtonTypes> {
 
 	public ButtonHeal() {
-		super("button_heal");
+		super(ButtonTypes.class, "button_heal");
 
 		setServerRequired();
-		setModes(modes);
+	}
+
+	public enum ButtonTypes implements IMode {
+		HEALTH(WidgetTextures.HEART) {
+			@Override
+			public ITextComponent getTitle() {
+				return new TextComponentTranslation("button.jew.heal.health.title");
+			}
+
+			@Override
+			public void onServerClick(EntityPlayerMP player) {
+				player.setHealth(player.getMaxHealth());
+			}
+		},
+		FEED(WidgetTextures.FOOD) {
+			@Override
+			public ITextComponent getTitle() {
+				return new TextComponentTranslation("button.jew.heal.feed.title");
+			}
+
+			@Override
+			public void onServerClick(EntityPlayerMP player) {
+				player.getFoodStats().addStats(20, 2.0F);
+			}
+		},
+		;
+
+		private final WidgetTexture widgetTexture;
+
+		ButtonTypes(WidgetTexture widgetTexture) {
+			this.widgetTexture = widgetTexture;
+		}
+
+		@Nonnull
+		@Override
+		public WidgetTexture getModeTexture() {
+			return widgetTexture;
+		}
+
+		@Override
+		@SideOnly(Side.CLIENT)
+		public EnumActionResult onClientClick(int mouseX, int mouseY) {
+			return EnumActionResult.SUCCESS;
+		}
 	}
 }

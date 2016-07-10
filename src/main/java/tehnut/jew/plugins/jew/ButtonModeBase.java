@@ -1,20 +1,18 @@
 package tehnut.jew.plugins.jew;
 
-import com.google.common.collect.ImmutableList;
 import net.minecraft.util.ResourceLocation;
+import tehnut.jew.JustEnoughWidgets;
+import tehnut.jew.api.button.IMode;
 import tehnut.jew.api.button.ButtonMode;
 
-import java.util.List;
+public class ButtonModeBase<T extends Enum<T> & IMode> extends ButtonMode<T> {
 
-public class ButtonModeBase extends ButtonMode {
+	private final String name;
 
-	private final String id;
-	private List<Mode> modes;
+	public ButtonModeBase(Class<T> enumClass, String name) {
+		super(WidgetTextures.BLANK, enumClass);
 
-	public ButtonModeBase(String id) {
-		super(WidgetTextures.BLANK);
-
-		this.id = id;
+		this.name = name;
 	}
 
 	@Override
@@ -23,17 +21,7 @@ public class ButtonModeBase extends ButtonMode {
 	}
 
 	@Override
-	public List<Mode> getModes() {
-		return ImmutableList.copyOf(modes);
-	}
-
-	public ButtonModeBase setModes(List<Mode> modes) {
-		this.modes = modes;
-		return this;
-	}
-
-	@Override
 	public ResourceLocation getButtonId() {
-		return new ResourceLocation("justenoughwidgets", id);
+		return new ResourceLocation(JustEnoughWidgets.MODID, name);
 	}
 }

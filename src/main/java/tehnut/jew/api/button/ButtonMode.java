@@ -13,28 +13,17 @@ import tehnut.jew.api.WidgetTexture;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.List;
 
-public abstract class ButtonMode extends Button implements IModeButton {
+public abstract class ButtonMode<T extends Enum<T> & IMode> extends Button {
 
-	private int modeIndex = 0;
+	private final T[] modes;
+	private T mode;
 
-	public ButtonMode(WidgetTexture widgetTexture) {
+	public ButtonMode(WidgetTexture widgetTexture, Class<T> enumClass) {
 		super(widgetTexture);
-	}
 
-	@Override
-	public Mode getMode() {
-		return getModes().get(modeIndex);
-	}
-
-	@Override
-	public void cycleMode() {
-		int newIndex = modeIndex + 1;
-		if (newIndex >= getModes().size())
-			newIndex = 0;
-
-		modeIndex = newIndex;
+		this.modes = enumClass.getEnumConstants();
+		setMode(modes[0]);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -69,12 +58,25 @@ public abstract class ButtonMode extends Button implements IModeButton {
 	@Nonnull
 	@Override
 	public ITextComponent getUseNotification(EntityPlayerMP player) {
-		return new TextComponentString(String.format("%s used the %s button with mode %d.", player.getDisplayNameString(), getButtonId(), modeIndex));
+		return new TextComponentString(String.format("%s used the %s button with mode %s.", player.getDisplayNameString(), getButtonId(), mode.name()));
 	}
 
 	@Override
-	public abstract List<Mode> getModes();
-
-	@Override
 	public abstract ResourceLocation getButtonId();
+
+	public void cycleMode() {
+		setMode(modes[(mode.ordinal() + 1) % modes.length]);
+	}
+
+	public T getMode() {
+		return mode;
+	}
+
+	public void setMode(T mode) {
+		this.mode = mode;
+	}
+
+	public T[] getModes() {
+		return modes;
+	}
 }
