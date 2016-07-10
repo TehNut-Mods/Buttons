@@ -12,64 +12,22 @@ import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Locale;
 
 public enum  TimeModes implements IMode {
-	DAWN(WidgetTextures.DAWN) {
-		@Nullable
-		@Override
-		public ITextComponent getTitle() {
-			return new TextComponentTranslation("button.jew.time.dawn.title");
-		}
-
-		@Override
-		public void onServerClick(EntityPlayerMP player) {
-			player.getEntityWorld().setWorldTime(23000);
-		}
-	},
-	DAY(WidgetTextures.DAY) {
-		@Nullable
-		@Override
-		public ITextComponent getTitle() {
-			return new TextComponentTranslation("button.jew.time.day.title");
-		}
-
-		@Override
-		public void onServerClick(EntityPlayerMP player) {
-			player.getEntityWorld().setWorldTime(6000);
-		}
-	},
-	DUSK(WidgetTextures.DUSK) {
-		@Nullable
-		@Override
-		public ITextComponent getTitle() {
-			return new TextComponentTranslation("button.jew.time.dusk.title");
-		}
-
-		@Override
-		public void onServerClick(EntityPlayerMP player) {
-			player.getEntityWorld().setWorldTime(13000);
-		}
-	},
-	NIGHT(WidgetTextures.NIGHT) {
-		@Nullable
-		@Override
-		public ITextComponent getTitle() {
-			return new TextComponentTranslation("button.jew.time.night.title");
-		}
-
-		@Override
-		public void onServerClick(EntityPlayerMP player) {
-			player.getEntityWorld().setWorldTime(18000);
-		}
-	},
+	DAWN(WidgetTextures.DAWN, 23000),
+	DAY(WidgetTextures.DAY, 6000),
+	DUSK(WidgetTextures.DUSK, 13000),
+	NIGHT(WidgetTextures.NIGHT, 18000),
 	;
 
 	private final WidgetTexture widgetTexture;
+	private final int time;
 
-	TimeModes(WidgetTexture widgetTexture) {
+	TimeModes(WidgetTexture widgetTexture, int time) {
 		this.widgetTexture = widgetTexture;
+		this.time = time;
 	}
-
 
 	@Nonnull
 	@Override
@@ -77,9 +35,20 @@ public enum  TimeModes implements IMode {
 		return widgetTexture;
 	}
 
+	@Nullable
+	@Override
+	public ITextComponent getTitle() {
+		return new TextComponentTranslation("button.jew.time." + name().toLowerCase(Locale.ENGLISH) + ".title");
+	}
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public EnumActionResult onClientClick(int mouseX, int mouseY) {
 		return net.minecraft.util.EnumActionResult.SUCCESS;
+	}
+
+	@Override
+	public void onServerClick(EntityPlayerMP player) {
+		player.getEntityWorld().setWorldTime(time);
 	}
 }
