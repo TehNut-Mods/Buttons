@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import tehnut.jew.config.ConfigHandler;
 import tehnut.jew.network.MessageButtonClicked;
+import tehnut.jew.network.MessageDeleteItem;
 import tehnut.jew.proxy.CommonProxy;
 
 import java.io.File;
@@ -38,6 +39,7 @@ public class JustEnoughWidgets {
 		configDir = new File(event.getModConfigurationDirectory(), "JEW");
 		ConfigHandler.init(new File(configDir, NAME + ".cfg"));
 		NETWORK_INSTANCE.registerMessage(MessageButtonClicked.Handler.class, MessageButtonClicked.class, 0, Side.SERVER);
+		NETWORK_INSTANCE.registerMessage(MessageDeleteItem.Handler.class, MessageDeleteItem.class, 1, Side.SERVER);
 
 		proxy.preInit(event);
     }

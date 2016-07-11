@@ -20,5 +20,6 @@ public class JEWPlugin extends IWidgetPlugin.Base {
 		widgetRegistry.addButton(new ButtonModeBase<HealModes>(HealModes.class, "button_heal", true));
 		widgetRegistry.addButton(new ButtonModeBase<WeatherModes>(WeatherModes.class, "button_weather", true));
 		widgetRegistry.addButton(new ButtonKillall());
+		widgetRegistry.addButton(new ButtonDelete());
 	}
 }
