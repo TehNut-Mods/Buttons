@@ -15,10 +15,10 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public enum GameModes implements IMode {
-	SURVIVAL(WidgetTextures.DAWN, GameType.SURVIVAL),
-	CREATIVE(WidgetTextures.DAY, GameType.CREATIVE),
-	ADVENTURE(WidgetTextures.DUSK, GameType.ADVENTURE),
-	SPECTATOR(WidgetTextures.NIGHT, GameType.SPECTATOR),
+	SURVIVAL(WidgetTextures.BLANK, GameType.SURVIVAL),
+	CREATIVE(WidgetTextures.BLANK, GameType.CREATIVE),
+	ADVENTURE(WidgetTextures.BLANK, GameType.ADVENTURE),
+	SPECTATOR(WidgetTextures.GLASSES, GameType.SPECTATOR),
 	;
 
 	private final WidgetTexture widgetTexture;

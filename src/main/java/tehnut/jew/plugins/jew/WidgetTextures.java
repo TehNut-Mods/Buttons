@@ -61,6 +61,14 @@ public class WidgetTextures {
 			20
 	);
 
+	public static final WidgetTexture GLASSES = new WidgetTexture(
+			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
+			140,
+			20,
+			20,
+			20
+	);
+
 	public static final WidgetTexture BLANK = new WidgetTexture(
 			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
 			0,
