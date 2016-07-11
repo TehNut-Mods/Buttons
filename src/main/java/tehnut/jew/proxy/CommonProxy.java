@@ -44,7 +44,7 @@ public class CommonProxy {
 					Stopwatch stopwatch = Stopwatch.createStarted();
 					JustEnoughWidgets.LOGGER.info("Registering plugin: {}", plugin.getClass().getCanonicalName());
 					plugin.register(WidgetRegistry.INSTANCE);
-					JustEnoughWidgets.LOGGER.info("Registered plugin {} in {}", plugin.getClass().getCanonicalName(), stopwatch.stop());
+					JustEnoughWidgets.debug("Registered plugin {} in {}", plugin.getClass().getCanonicalName(), stopwatch.stop());
 				} catch (Exception e) {
 					JustEnoughWidgets.LOGGER.error("Error loading plugin {}: {}", plugin.getClass().getCanonicalName(), e.getLocalizedMessage());
 					e.printStackTrace();

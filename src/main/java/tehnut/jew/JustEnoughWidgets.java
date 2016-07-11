@@ -10,8 +10,11 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import tehnut.jew.config.ConfigHandler;
 import tehnut.jew.network.MessageButtonClicked;
 import tehnut.jew.proxy.CommonProxy;
+
+import java.io.File;
 
 @Mod(modid = JustEnoughWidgets.MODID, clientSideOnly = true, name = JustEnoughWidgets.NAME, version = JustEnoughWidgets.VERSION)
 public class JustEnoughWidgets {
@@ -28,8 +31,12 @@ public class JustEnoughWidgets {
 	public static final Logger LOGGER = LogManager.getLogger(NAME);
 	public static final SimpleNetworkWrapper NETWORK_INSTANCE = new SimpleNetworkWrapper(MODID);
 
+	public static File configDir;
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+		configDir = new File(event.getModConfigurationDirectory(), "JEW");
+		ConfigHandler.init(new File(configDir, NAME + ".cfg"));
 		NETWORK_INSTANCE.registerMessage(MessageButtonClicked.Handler.class, MessageButtonClicked.class, 0, Side.SERVER);
 
 		proxy.preInit(event);
@@ -48,5 +55,10 @@ public class JustEnoughWidgets {
 	@Mod.EventHandler
 	public void idMapping(FMLModIdMappingEvent event) {
 		proxy.startup(event);
+	}
+
+	public static void debug(String message, Object... args) {
+		if (ConfigHandler.isDebugMode())
+			LOGGER.info(message, args);
 	}
 }

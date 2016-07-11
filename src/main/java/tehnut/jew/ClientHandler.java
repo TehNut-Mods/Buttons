@@ -17,7 +17,7 @@ public class ClientHandler {
 
 	@SubscribeEvent
 	public void onGuiDrawPost(GuiScreenEvent.DrawScreenEvent.Post event) {
-			buttonListOverlay.drawScreenPost(event.getGui(), event.getGui().buttonList, event.getMouseX(), event.getMouseY());
+		buttonListOverlay.drawScreenPost(event.getGui(), event.getGui().buttonList, event.getMouseX(), event.getMouseY());
 	}
 
 	@SubscribeEvent

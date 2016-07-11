@@ -32,7 +32,7 @@ public class ButtonListOverlay implements IButtonListOverlay {
 			this.columns = (int) Math.floor((double) container.guiLeft / 24);
 
 			drawScreen(screen, screen.buttonList);
-			JustEnoughWidgets.LOGGER.info("Initialized button list in {}.", stopwatch.stop());
+			JustEnoughWidgets.debug("Initialized button list in {}.", stopwatch.stop());
 		} else {
 			close();
 		}
