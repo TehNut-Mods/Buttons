@@ -49,6 +49,11 @@ public enum  TimeModes implements IMode {
 
 	@Override
 	public void onServerClick(EntityPlayerMP player) {
-		player.getEntityWorld().setWorldTime(time);
+		int ticksPerDay = 24000;
+		long currentTime = player.getEntityWorld().getWorldTime();
+		long currentDayTime = currentTime % ticksPerDay;
+		long targetDayTime = time % ticksPerDay;
+		long diffTime = ((targetDayTime - currentDayTime) + ticksPerDay) % ticksPerDay;
+		player.getEntityWorld().setWorldTime(currentTime + diffTime);
 	}
 }
