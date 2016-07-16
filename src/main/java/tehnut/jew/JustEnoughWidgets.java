@@ -26,6 +26,7 @@ public class JustEnoughWidgets {
 
     @SidedProxy(clientSide = "tehnut.jew.proxy.ClientProxy", serverSide = "tehnut.jew.proxy.CommonProxy")
     public static CommonProxy proxy;
+
     @Mod.Instance(MODID)
     public static JustEnoughWidgets instance;
 

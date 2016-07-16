@@ -14,6 +14,8 @@ import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 
 public enum TimeModes implements IMode {
@@ -39,8 +41,8 @@ public enum TimeModes implements IMode {
 
 	@Nullable
 	@Override
-	public ITextComponent getTitle() {
-		return new TextComponentTranslation("button.jew.time." + name().toLowerCase(Locale.ENGLISH) + ".title");
+	public List<? extends ITextComponent> getTooltip() {
+		return Collections.singletonList(new TextComponentTranslation("button.jew.time." + name().toLowerCase(Locale.ENGLISH) + ".title"));
 	}
 
 	@Override

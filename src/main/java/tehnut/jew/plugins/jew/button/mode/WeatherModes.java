@@ -12,13 +12,15 @@ import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.List;
 
 public enum  WeatherModes implements IMode {
 	SUNNY(WidgetTextures.DAY) {
 		@Nullable
 		@Override
-		public ITextComponent getTitle() {
-			return new TextComponentTranslation("button.jew.weather.sun.title");
+		public List<? extends ITextComponent> getTooltip() {
+			return Collections.singletonList(new TextComponentTranslation("button.jew.weather.sun.title"));
 		}
 
 		@Override
@@ -30,8 +32,8 @@ public enum  WeatherModes implements IMode {
 	RAINY(WidgetTextures.NIGHT) {
 		@Nullable
 		@Override
-		public ITextComponent getTitle() {
-			return new TextComponentTranslation("button.jew.weather.rain.title");
+		public List<? extends ITextComponent> getTooltip() {
+			return Collections.singletonList(new TextComponentTranslation("button.jew.weather.rain.title"));
 		}
 
 		@Override

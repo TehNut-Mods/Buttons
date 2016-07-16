@@ -15,11 +15,6 @@ public class ButtonBase extends Button {
 	}
 
 	@Override
-	public boolean requireElevatedPermissions() {
-		return isServerRequired();
-	}
-
-	@Override
 	public ResourceLocation getButtonId() {
 		return new ResourceLocation("justenoughwidgets", id);
 	}

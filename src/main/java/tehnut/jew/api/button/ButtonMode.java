@@ -3,8 +3,7 @@ package tehnut.jew.api.button;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.*;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
@@ -13,6 +12,8 @@ import tehnut.jew.api.WidgetTexture;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class ButtonMode<T extends Enum<T> & IMode> extends Button {
 
@@ -51,8 +52,12 @@ public abstract class ButtonMode<T extends Enum<T> & IMode> extends Button {
 
 	@Nullable
 	@Override
-	public ITextComponent getTitle() {
-		return getMode().getTitle();
+	public List<? extends ITextComponent> getTooltip() {
+		List<ITextComponent> tooltip = new ArrayList<ITextComponent>();
+		if (getMode().getTooltip() != null)
+			tooltip.addAll(getMode().getTooltip());
+		tooltip.add(new TextComponentTranslation("button.jew.mode").setStyle(new Style().setItalic(true).setColor(TextFormatting.GRAY)));
+		return tooltip;
 	}
 
 	@Nonnull

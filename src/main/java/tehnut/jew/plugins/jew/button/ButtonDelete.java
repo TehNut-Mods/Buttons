@@ -18,6 +18,8 @@ import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.List;
 
 public class ButtonDelete extends ButtonBase {
 
@@ -61,7 +63,7 @@ public class ButtonDelete extends ButtonBase {
 
 	@Nullable
 	@Override
-	public ITextComponent getTitle() {
-		return new TextComponentTranslation("button.jew.delete.title");
+	public List<? extends ITextComponent> getTooltip() {
+		return Collections.singletonList(new TextComponentTranslation("button.jew.delete.title"));
 	}
 }

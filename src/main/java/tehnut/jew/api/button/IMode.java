@@ -9,6 +9,7 @@ import tehnut.jew.api.WidgetTexture;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
 
 public interface IMode {
 
@@ -16,7 +17,7 @@ public interface IMode {
 	WidgetTexture getModeTexture();
 
 	@Nullable
-	ITextComponent getTitle();
+	List<? extends ITextComponent> getTooltip();
 
 	@SideOnly(Side.CLIENT)
 	EnumActionResult onClientClick(int mouseX, int mouseY);

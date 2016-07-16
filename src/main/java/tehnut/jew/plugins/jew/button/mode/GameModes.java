@@ -13,6 +13,8 @@ import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.List;
 
 public enum GameModes implements IMode {
 	SURVIVAL(WidgetTextures.BLANK, GameType.SURVIVAL),
@@ -37,8 +39,8 @@ public enum GameModes implements IMode {
 
 	@Nullable
 	@Override
-	public ITextComponent getTitle() {
-		return new TextComponentTranslation("gameMode." + gameType.getName());
+	public List<? extends ITextComponent> getTooltip() {
+		return Collections.singletonList(new TextComponentTranslation("gameMode." + gameType.getName()));
 	}
 
 	@Override

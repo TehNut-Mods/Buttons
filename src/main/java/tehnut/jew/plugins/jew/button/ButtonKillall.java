@@ -10,6 +10,8 @@ import tehnut.jew.plugins.jew.ButtonBase;
 import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.List;
 
 public class ButtonKillall extends ButtonBase {
 
@@ -27,7 +29,7 @@ public class ButtonKillall extends ButtonBase {
 
 	@Nullable
 	@Override
-	public ITextComponent getTitle() {
-		return new TextComponentTranslation("button.jew.killall.title");
+	public List<? extends ITextComponent> getTooltip() {
+		return Collections.singletonList(new TextComponentTranslation("button.jew.killall.title"));
 	}
 }

@@ -11,12 +11,14 @@ import tehnut.jew.api.button.IMode;
 import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nonnull;
+import java.util.Collections;
+import java.util.List;
 
 public enum HealModes implements IMode {
 	HEALTH(WidgetTextures.HEART) {
 		@Override
-		public ITextComponent getTitle() {
-			return new TextComponentTranslation("button.jew.heal.health.title");
+		public List<? extends ITextComponent> getTooltip() {
+			return Collections.singletonList(new TextComponentTranslation("button.jew.heal.health.title"));
 		}
 
 		@Override
@@ -26,8 +28,8 @@ public enum HealModes implements IMode {
 	},
 	FEED(WidgetTextures.FOOD) {
 		@Override
-		public ITextComponent getTitle() {
-			return new TextComponentTranslation("button.jew.heal.feed.title");
+		public List<? extends ITextComponent> getTooltip() {
+			return Collections.singletonList(new TextComponentTranslation("button.jew.heal.feed.title"));
 		}
 
 		@Override

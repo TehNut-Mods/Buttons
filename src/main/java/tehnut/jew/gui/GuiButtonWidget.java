@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -53,12 +54,11 @@ public class GuiButtonWidget extends GuiButton {
 	}
 
 	public void drawButtonTooltips(int mouseX, int mouseY) {
-		if (visible && getButton().getTitle() != null) {
+		if (visible && getButton().getTooltip() != null) {
 			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
 			List<String> tooltips = new ArrayList<String>();
-			tooltips.add(getButton().getTitle().getFormattedText());
-			if (getButton() instanceof ButtonMode)
-				tooltips.add(new TextComponentTranslation("button.jew.mode").setStyle(new Style().setItalic(true).setColor(TextFormatting.GRAY)).getFormattedText());
+			for (ITextComponent textComponent : getButton().getTooltip())
+				tooltips.add(textComponent.getFormattedText());
 			GuiUtils.drawHoveringText(tooltips, mouseX, mouseY, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), -1, Minecraft.getMinecraft().fontRendererObj);
 		}
 	}

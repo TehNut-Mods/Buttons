@@ -6,6 +6,8 @@ import tehnut.jew.plugins.jew.ButtonBase;
 import tehnut.jew.plugins.jew.WidgetTextures;
 
 import javax.annotation.Nullable;
+import java.util.Collections;
+import java.util.List;
 
 public class ButtonTest extends ButtonBase {
 
@@ -19,7 +21,7 @@ public class ButtonTest extends ButtonBase {
 
 	@Nullable
 	@Override
-	public ITextComponent getTitle() {
-		return new TextComponentString("Test button " + id);
+	public List<? extends ITextComponent> getTooltip() {
+		return Collections.singletonList(new TextComponentString("Test button " + id));
 	}
 }

@@ -13,6 +13,8 @@ import tehnut.jew.api.WidgetTexture;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.List;
+import java.util.Set;
 
 /**
  * The base class for a Button that will be displayed at the top left of the screen when container is open.
@@ -68,10 +70,10 @@ public abstract class Button {
 	 *
 	 * If null is returned, no tooltip will be drawn.
 	 *
-	 * @return an {@link ITextComponent} to draw as a tooltip.
+	 * @return an array of {@link ITextComponent}'s to draw as a tooltip.
 	 */
 	@Nullable
-	public ITextComponent getTitle() {
+	public List<? extends ITextComponent> getTooltip() {
 		return null;
 	}
 
