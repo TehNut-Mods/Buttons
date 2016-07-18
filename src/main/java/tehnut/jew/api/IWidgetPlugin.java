@@ -8,11 +8,13 @@ package tehnut.jew.api;
 public interface IWidgetPlugin {
 	/**
 	 * Register this mod plugin with the registry.
-	 * Called just before the game launches.
-	 * Will be called again if the config changes.
+	 * Called during {@link net.minecraftforge.fml.common.event.FMLPostInitializationEvent}
 	 */
 	void register(IWidgetRegistry widgetRegistry);
 
+	/**
+	 * Base implementation. Used to avoid plugin breakages if new methods are added.
+	 */
 	class Base implements IWidgetPlugin {
 
 		@Override

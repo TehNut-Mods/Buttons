@@ -9,6 +9,14 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class ClientHelper {
 
+	/**
+	 * Draws the currently bound texture.
+	 *
+	 * @param zLevel 		- zLevel to draw at.
+	 * @param x		 		- xPosition to draw at.
+	 * @param y		 		- yPosition to draw at.
+	 * @param widgetTexture - The WidgetTexture to draw.
+	 */
 	public static void drawTexture(double zLevel, int x, int y, WidgetTexture widgetTexture) {
 		float f = 0.00390625F;
 		float f1 = 0.00390625F;
@@ -22,6 +30,9 @@ public class ClientHelper {
 		tessellator.draw();
 	}
 
+	/**
+	 * @return whether the mouse is inside the given box.
+	 */
 	public static boolean isMouseBetween(int mouseX, int mouseY, int x, int y, int width, int height) {
 		int xSize = x + width;
 		int ySize = y + height;

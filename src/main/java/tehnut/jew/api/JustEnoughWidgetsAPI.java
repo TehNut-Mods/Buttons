@@ -7,14 +7,6 @@ import javax.annotation.Nullable;
 
 public class JustEnoughWidgetsAPI {
 
-	/**
-	 * The currently constructed {@link IButtonListOverlay}.
-	 *
-	 * Will be null if no container is open.
-	 */
-	@Nullable
-	public static IButtonListOverlay buttonListOverlay;
-
 	public static final WidgetTexture BUTTON_BACKGROUND_DEFAULT = new WidgetTexture(
 			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
 			0,

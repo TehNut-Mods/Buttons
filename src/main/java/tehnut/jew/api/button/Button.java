@@ -63,11 +63,11 @@ public abstract class Button {
 	}
 
 	/**
-	 * Returns the title of the button. Used for a hovering tooltip.
+	 * Returns the tooltip of the button.
 	 *
 	 * If null is returned, no tooltip will be drawn.
 	 *
-	 * @return an array of {@link ITextComponent}'s to draw as a tooltip.
+	 * @return a list of {@link ITextComponent}'s to draw as a tooltip.
 	 */
 	@Nullable
 	public List<? extends ITextComponent> getTooltip() {

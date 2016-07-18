@@ -70,18 +70,35 @@ public abstract class ButtonMode<T extends Enum<T> & IMode> extends Button {
 	@Override
 	public abstract ResourceLocation getButtonId();
 
+	/**
+	 * Cycles to the next mode.
+	 */
 	public void cycleMode() {
 		setMode(modes[(mode.ordinal() + 1) % modes.length]);
 	}
 
+	/**
+	 * @return the currently selected mode.
+	 */
 	public T getMode() {
 		return mode;
 	}
 
-	public void setMode(T mode) {
+	/**
+	 * Sets the current mode to the new mode.
+	 *
+	 * @param mode - The mode to be set to.
+	 *
+	 * @return self for chaining.
+	 */
+	public ButtonMode<T> setMode(T mode) {
 		this.mode = mode;
+		return this;
 	}
 
+	/**
+	 * @return an array of all the modes.
+	 */
 	public T[] getModes() {
 		return modes;
 	}
