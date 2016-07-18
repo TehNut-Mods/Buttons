@@ -14,7 +14,6 @@ import tehnut.jew.api.WidgetTexture;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The base class for a Button that will be displayed at the top left of the screen when container is open.
@@ -22,8 +21,6 @@ import java.util.Set;
 public abstract class Button {
 
 	private final WidgetTexture widgetTexture;
-	@SideOnly(Side.CLIENT)
-	protected final Minecraft minecraft = Minecraft.getMinecraft();
 	private boolean serverRequired = false;
 
 	public Button(WidgetTexture widgetTexture) {
@@ -61,7 +58,7 @@ public abstract class Button {
 	 */
 	@SideOnly(Side.CLIENT)
 	public void drawButton(int x, int y) {
-		minecraft.renderEngine.bindTexture(getWidgetTexture().getTextureLocation());
+		Minecraft.getMinecraft().renderEngine.bindTexture(getWidgetTexture().getTextureLocation());
 		ClientHelper.drawTexture(1, x, y, getWidgetTexture());
 	}
 

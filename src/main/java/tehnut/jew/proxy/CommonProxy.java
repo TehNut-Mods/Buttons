@@ -37,7 +37,7 @@ public class CommonProxy {
 
 	}
 
-	public void startup(FMLModIdMappingEvent event) {
+	public void startup() {
 		if (!started) {
 			for (IWidgetPlugin plugin : plugins) {
 				try {

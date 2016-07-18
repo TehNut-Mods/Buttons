@@ -1,5 +1,6 @@
 package tehnut.jew.plugins.jew.button;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import tehnut.jew.plugins.jew.ButtonModeBase;
 import tehnut.jew.plugins.jew.button.mode.GameModes;
@@ -29,7 +30,7 @@ public class ButtonGamemode extends ButtonModeBase<GameModes> {
 		GlStateManager.pushMatrix();
 		GlStateManager.scale(1.5, 1.5, 1.5);
 		GlStateManager.translate(-4, 2, 0);
-		minecraft.fontRendererObj.drawStringWithShadow(text, x, y, Color.WHITE.getRGB());
+		Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(text, x, y, Color.WHITE.getRGB());
 		GlStateManager.popMatrix();
 	}
 }

@@ -10,16 +10,12 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import tehnut.jew.JustEnoughWidgets;
 import tehnut.jew.api.ClientHelper;
 import tehnut.jew.api.JustEnoughWidgetsAPI;
 import tehnut.jew.api.button.Button;
 import tehnut.jew.api.WidgetTexture;
-import tehnut.jew.api.button.ButtonMode;
 import tehnut.jew.network.MessageButtonClicked;
 
 import java.util.ArrayList;

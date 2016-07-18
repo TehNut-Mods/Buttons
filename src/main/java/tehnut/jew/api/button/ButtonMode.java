@@ -1,5 +1,6 @@
 package tehnut.jew.api.button;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.ResourceLocation;
@@ -46,7 +47,7 @@ public abstract class ButtonMode<T extends Enum<T> & IMode> extends Button {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void drawButton(int x, int y) {
-		minecraft.renderEngine.bindTexture(getMode().getModeTexture().getTextureLocation());
+		Minecraft.getMinecraft().renderEngine.bindTexture(getMode().getModeTexture().getTextureLocation());
 		ClientHelper.drawTexture(1, x, y, getMode().getModeTexture());
 	}
 
