@@ -69,6 +69,14 @@ public class WidgetTextures {
 			20
 	);
 
+	public static final WidgetTexture TRASH = new WidgetTexture(
+			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
+			160,
+			20,
+			20,
+			20
+	);
+
 	public static final WidgetTexture BLANK = new WidgetTexture(
 			new ResourceLocation("justenoughwidgets", "textures/gui_widgets.png"),
 			0,

@@ -24,7 +24,7 @@ import java.util.List;
 public class ButtonDelete extends ButtonBase {
 
 	public ButtonDelete() {
-		super(WidgetTextures.GLASSES, "button_delete");
+		super(WidgetTextures.TRASH, "button_delete");
 
 		setServerRequired();
 	}
