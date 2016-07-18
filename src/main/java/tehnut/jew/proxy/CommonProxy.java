@@ -2,7 +2,6 @@ package tehnut.jew.proxy;
 
 import com.google.common.base.Stopwatch;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLModIdMappingEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import tehnut.jew.JustEnoughWidgets;

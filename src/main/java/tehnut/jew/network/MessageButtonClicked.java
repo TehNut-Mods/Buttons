@@ -59,6 +59,7 @@ public class MessageButtonClicked implements IMessage {
 					Stopwatch stopwatch = Stopwatch.createStarted();
 					boolean canUse = true;
 					if (message.getButton() instanceof ButtonMode)
+						//noinspection unchecked
 						((ButtonMode) message.getButton()).setMode(((ButtonMode) message.getButton()).getModes()[message.getMode()]);
 
 					if (message.getButton().requireElevatedPermissions())

@@ -1,9 +1,6 @@
 package tehnut.jew.api;
 
 import net.minecraft.util.ResourceLocation;
-import tehnut.jew.api.button.IButtonListOverlay;
-
-import javax.annotation.Nullable;
 
 public class JustEnoughWidgetsAPI {
 

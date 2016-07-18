@@ -7,7 +7,7 @@ import tehnut.jew.gui.ButtonListOverlay;
 
 public class ClientHandler {
 
-	private ButtonListOverlay buttonListOverlay = new ButtonListOverlay();
+	private final ButtonListOverlay buttonListOverlay = new ButtonListOverlay();
 
 	@SubscribeEvent
 	public void onGuiInitPost(GuiScreenEvent.InitGuiEvent.Post event) {

@@ -4,7 +4,6 @@ import tehnut.jew.api.IWidgetPlugin;
 import tehnut.jew.api.IWidgetRegistry;
 import tehnut.jew.api.WidgetPlugin;
 import tehnut.jew.plugins.jew.button.*;
-import tehnut.jew.plugins.jew.button.mode.GameModes;
 import tehnut.jew.plugins.jew.button.mode.HealModes;
 import tehnut.jew.plugins.jew.button.mode.TimeModes;
 import tehnut.jew.plugins.jew.button.mode.WeatherModes;

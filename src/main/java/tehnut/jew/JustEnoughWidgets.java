@@ -5,7 +5,6 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import tehnut.jew.config.ConfigHandler;
@@ -54,18 +53,6 @@ public class JustEnoughWidgets {
 
 		proxy.startup();
     }
-
-//	@Mod.EventHandler
-//	@SideOnly(Side.SERVER)
-//	public void serverStarting(FMLServerStartingEvent event) {
-//		proxy.startup();
-//	}
-//
-//	@Mod.EventHandler
-//	@SideOnly(Side.CLIENT)
-//	public void idMapping(FMLModIdMappingEvent event) {
-//		proxy.startup();
-//	}
 
 	public static void debug(String message, Object... args) {
 		if (ConfigHandler.isDebugMode())
