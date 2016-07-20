@@ -1,0 +1,18 @@
+# Buttons
+button.butt.exit.title=Close screen
+button.butt.time.dawn.title=Set time to dawn
+button.butt.time.day.title=Set time to day
+button.butt.time.dusk.title=Set time to dusk
+button.butt.time.night.title=Set time to night
+button.butt.killall.title=Kill all hostiles
+button.butt.heal.health.title=Heal
+button.butt.heal.feed.title=Feed
+button.butt.weather.sun.title=Set sunny
+button.butt.weather.rain.title=Set rainy
+button.butt.delete.title=Delete
+
+# Info
+button.butt.mode=Shift Click to cycle
+
+# Chat
+chat.butt.permission.fail=You do not meet the required permission level to do that.

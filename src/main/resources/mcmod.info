@@ -1,8 +1,8 @@
 [
 {
-  "modid": "justenoughwidgets",
-  "name": "JustEnoughWidgets",
-  "description": "Adds widgets to the left side of the inventory screen",
+  "modid": "buttons",
+  "name": "Buttons",
+  "description": "Adds buttons to the lefthand side of the screen.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "http://tehnut.info/",
