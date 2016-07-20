@@ -22,7 +22,7 @@ Add to your `build.gradle`:
 ```groovy
     repositories {
         maven {
-            // location of the maven that hosts JEW files
+            // location of the maven that hosts Buttons' files
             url "http://tehnut.info/maven/"
         }
     }
