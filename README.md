@@ -1,6 +1,6 @@
-# Just Enough Widgets (JEW)
+# Buttons
 
-JustEnoughWidgets (working title) is a mod that adds different kinds of widgets to the left side of your inventory screen. 
+Buttons is a mod that adds utility buttons to the left side of your inventory screen. 
 
 There is a large focus on stability, performance, and ease of use.
 
@@ -9,7 +9,7 @@ This means:
 * not a coremod
 * no dependencies
 * clean API for developers
-* nothing but widgets
+* nothing but buttons
 
 ## Download
 
@@ -28,10 +28,10 @@ Add to your `build.gradle`:
     }
 
     dependencies {
-        deobfCompile "info.tehnut.jew:JustEnoughWidgets-${mc_version}:${jew_version}"
+        deobfCompile "info.tehnut.buttons:Buttons-${mc_version}:${buttons_version}"
     }
 ```
 
 ## Plugin Examples (how to use the API)
 
-***To come soon***
+* [Default plugin](https://github.com/TehNut/Buttons/tree/1.10/src/main/java/tehnut/buttons/plugins/buttons)
