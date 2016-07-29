@@ -15,20 +15,20 @@ import java.util.List;
 
 public class ButtonClose extends ButtonBase {
 
-	public ButtonClose() {
-		super(WidgetTextures.BUTTON_EXIT, "button_exit");
-	}
+    public ButtonClose() {
+        super(WidgetTextures.BUTTON_EXIT, "button_exit");
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumActionResult onClientClick(int mouseX, int mouseY) {
-		Minecraft.getMinecraft().displayGuiScreen(null);
-		return EnumActionResult.SUCCESS;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumActionResult onClientClick(int mouseX, int mouseY) {
+        Minecraft.getMinecraft().displayGuiScreen(null);
+        return EnumActionResult.SUCCESS;
+    }
 
-	@Nullable
-	@Override
-	public List<? extends ITextComponent> getTooltip() {
-		return Collections.singletonList(new TextComponentTranslation("button.jew.exit.title"));
-	}
+    @Nullable
+    @Override
+    public List<? extends ITextComponent> getTooltip() {
+        return Collections.singletonList(new TextComponentTranslation("button.jew.exit.title"));
+    }
 }

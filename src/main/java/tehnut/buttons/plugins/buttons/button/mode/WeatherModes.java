@@ -15,50 +15,49 @@ import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
-public enum  WeatherModes implements IMode {
-	SUNNY(WidgetTextures.DAY) {
-		@Nullable
-		@Override
-		public List<? extends ITextComponent> getTooltip() {
-			return Collections.singletonList(new TextComponentTranslation("button.butt.weather.sun.title"));
-		}
+public enum WeatherModes implements IMode {
+    SUNNY(WidgetTextures.DAY) {
+        @Nullable
+        @Override
+        public List<? extends ITextComponent> getTooltip() {
+            return Collections.singletonList(new TextComponentTranslation("button.butt.weather.sun.title"));
+        }
 
-		@Override
-		public void onServerClick(EntityPlayerMP player) {
-			player.getEntityWorld().getWorldInfo().setCleanWeatherTime(Integer.MAX_VALUE);
-			player.getEntityWorld().getWorldInfo().setRaining(false);
-		}
-	},
-	RAINY(WidgetTextures.NIGHT) {
-		@Nullable
-		@Override
-		public List<? extends ITextComponent> getTooltip() {
-			return Collections.singletonList(new TextComponentTranslation("button.butt.weather.rain.title"));
-		}
+        @Override
+        public void onServerClick(EntityPlayerMP player) {
+            player.getEntityWorld().getWorldInfo().setCleanWeatherTime(Integer.MAX_VALUE);
+            player.getEntityWorld().getWorldInfo().setRaining(false);
+        }
+    },
+    RAINY(WidgetTextures.NIGHT) {
+        @Nullable
+        @Override
+        public List<? extends ITextComponent> getTooltip() {
+            return Collections.singletonList(new TextComponentTranslation("button.butt.weather.rain.title"));
+        }
 
-		@Override
-		public void onServerClick(EntityPlayerMP player) {
-			player.getEntityWorld().getWorldInfo().setCleanWeatherTime(0);
-			player.getEntityWorld().getWorldInfo().setRaining(true);
-		}
-	}
-	;
+        @Override
+        public void onServerClick(EntityPlayerMP player) {
+            player.getEntityWorld().getWorldInfo().setCleanWeatherTime(0);
+            player.getEntityWorld().getWorldInfo().setRaining(true);
+        }
+    };
 
-	private final WidgetTexture widgetTexture;
+    private final WidgetTexture widgetTexture;
 
-	WeatherModes(WidgetTexture widgetTexture) {
-		this.widgetTexture = widgetTexture;
-	}
+    WeatherModes(WidgetTexture widgetTexture) {
+        this.widgetTexture = widgetTexture;
+    }
 
-	@Nonnull
-	@Override
-	public WidgetTexture getModeTexture() {
-		return widgetTexture;
-	}
+    @Nonnull
+    @Override
+    public WidgetTexture getModeTexture() {
+        return widgetTexture;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumActionResult onClientClick(int mouseX, int mouseY) {
-		return EnumActionResult.SUCCESS;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumActionResult onClientClick(int mouseX, int mouseY) {
+        return EnumActionResult.SUCCESS;
+    }
 }

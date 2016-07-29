@@ -6,16 +6,16 @@ import tehnut.buttons.api.WidgetTexture;
 
 public class ButtonBase extends Button {
 
-	private final String id;
+    private final String id;
 
-	public ButtonBase(WidgetTexture widgetTexture, String id) {
-		super(widgetTexture);
+    public ButtonBase(WidgetTexture widgetTexture, String id) {
+        super(widgetTexture);
 
-		this.id = id;
-	}
+        this.id = id;
+    }
 
-	@Override
-	public ResourceLocation getButtonId() {
-		return new ResourceLocation("buttons", id);
-	}
+    @Override
+    public ResourceLocation getButtonId() {
+        return new ResourceLocation("buttons", id);
+    }
 }

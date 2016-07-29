@@ -9,28 +9,36 @@ import java.awt.*;
 
 public class ButtonGamemode extends ButtonModeBase<GameModes> {
 
-	public ButtonGamemode() {
-		super(GameModes.class, "button_gamemode", true);
+    public ButtonGamemode() {
+        super(GameModes.class, "button_gamemode", true);
 
-		setServerRequired();
-	}
+        setServerRequired();
+    }
 
-	@Override
-	public void drawButton(int x, int y) {
-		switch (getMode()) {
-			case SURVIVAL: drawScaledText("S", x, y); break;
-			case CREATIVE: drawScaledText("C", x, y); break;
-			case ADVENTURE: drawScaledText("A", x, y); break;
-			case SPECTATOR: super.drawButton(x, y); break;
-		}
+    @Override
+    public void drawButton(int x, int y) {
+        switch (getMode()) {
+            case SURVIVAL:
+                drawScaledText("S", x, y);
+                break;
+            case CREATIVE:
+                drawScaledText("C", x, y);
+                break;
+            case ADVENTURE:
+                drawScaledText("A", x, y);
+                break;
+            case SPECTATOR:
+                super.drawButton(x, y);
+                break;
+        }
 
-	}
+    }
 
-	private void drawScaledText(String text, int x, int y) {
-		GlStateManager.pushMatrix();
-		GlStateManager.scale(1.5, 1.5, 1.5);
-		GlStateManager.translate(-4, 2, 0);
-		Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(text, x, y, Color.WHITE.getRGB());
-		GlStateManager.popMatrix();
-	}
+    private void drawScaledText(String text, int x, int y) {
+        GlStateManager.pushMatrix();
+        GlStateManager.scale(1.5, 1.5, 1.5);
+        GlStateManager.translate(-4, 2, 0);
+        Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(text, x, y, Color.WHITE.getRGB());
+        GlStateManager.popMatrix();
+    }
 }

@@ -13,14 +13,14 @@ import java.util.List;
 
 public interface IMode {
 
-	@Nonnull
-	WidgetTexture getModeTexture();
+    @Nonnull
+    WidgetTexture getModeTexture();
 
-	@Nullable
-	List<? extends ITextComponent> getTooltip();
+    @Nullable
+    List<? extends ITextComponent> getTooltip();
 
-	@SideOnly(Side.CLIENT)
-	EnumActionResult onClientClick(int mouseX, int mouseY);
+    @SideOnly(Side.CLIENT)
+    EnumActionResult onClientClick(int mouseX, int mouseY);
 
-	void onServerClick(EntityPlayerMP player);
+    void onServerClick(EntityPlayerMP player);
 }

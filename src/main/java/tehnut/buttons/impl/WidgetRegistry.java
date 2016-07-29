@@ -10,20 +10,20 @@ import java.util.Map;
 
 public class WidgetRegistry implements IWidgetRegistry {
 
-	public static final WidgetRegistry INSTANCE = new WidgetRegistry();
+    public static final WidgetRegistry INSTANCE = new WidgetRegistry();
 
-	private WidgetRegistry() {
-		// No-op
-	}
+    private WidgetRegistry() {
+        // No-op
+    }
 
-	private final Map<ResourceLocation, Button> buttons = new LinkedHashMap<ResourceLocation, Button>();
+    private final Map<ResourceLocation, Button> buttons = new LinkedHashMap<ResourceLocation, Button>();
 
-	@Override
-	public void addButton(Button button) {
-		buttons.put(button.getButtonId(), button);
-	}
+    @Override
+    public void addButton(Button button) {
+        buttons.put(button.getButtonId(), button);
+    }
 
-	public Map<ResourceLocation, Button> getButtons() {
-		return ImmutableMap.copyOf(buttons);
-	}
+    public Map<ResourceLocation, Button> getButtons() {
+        return ImmutableMap.copyOf(buttons);
+    }
 }

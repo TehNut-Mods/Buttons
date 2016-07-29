@@ -11,17 +11,17 @@ import java.util.List;
 
 public class ButtonTest extends ButtonBase {
 
-	private int id;
+    private int id;
 
-	public ButtonTest(int i) {
-		super(WidgetTextures.DAY, "button_test" + i);
+    public ButtonTest(int i) {
+        super(WidgetTextures.DAY, "button_test" + i);
 
-		this.id = i;
-	}
+        this.id = i;
+    }
 
-	@Nullable
-	@Override
-	public List<? extends ITextComponent> getTooltip() {
-		return Collections.singletonList(new TextComponentString("Test button " + id));
-	}
+    @Nullable
+    @Override
+    public List<? extends ITextComponent> getTooltip() {
+        return Collections.singletonList(new TextComponentString("Test button " + id));
+    }
 }

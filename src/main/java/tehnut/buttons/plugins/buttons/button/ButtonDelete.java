@@ -23,47 +23,47 @@ import java.util.List;
 
 public class ButtonDelete extends ButtonBase {
 
-	public ButtonDelete() {
-		super(WidgetTextures.TRASH, "button_delete");
+    public ButtonDelete() {
+        super(WidgetTextures.TRASH, "button_delete");
 
-		setServerRequired();
-	}
+        setServerRequired();
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumActionResult onClientClick(int mouseX, int mouseY) {
-		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
-		ItemStack mouseStack = player.inventory.getItemStack();
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumActionResult onClientClick(int mouseX, int mouseY) {
+        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+        ItemStack mouseStack = player.inventory.getItemStack();
 
-		if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) && mouseStack == null)
-			return EnumActionResult.SUCCESS;
+        if (Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) && mouseStack == null)
+            return EnumActionResult.SUCCESS;
 
-		if (mouseStack != null) {
-			player.inventory.setItemStack(null);
-			Buttons.NETWORK_INSTANCE.sendToServer(new MessageDeleteItem(mouseStack, Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)));
-		}
-		return EnumActionResult.PASS;
-	}
+        if (mouseStack != null) {
+            player.inventory.setItemStack(null);
+            Buttons.NETWORK_INSTANCE.sendToServer(new MessageDeleteItem(mouseStack, Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)));
+        }
+        return EnumActionResult.PASS;
+    }
 
-	@Override
-	public void onServerClick(EntityPlayerMP player) {
-		for (int i = 0; i < player.inventory.mainInventory.length; i++)
-			player.inventory.mainInventory[i] = null;
-		for (int i = 0; i < player.inventory.offHandInventory.length; i++)
-			player.inventory.offHandInventory[i] = null;
-		for (int i = 0; i < player.inventory.armorInventory.length; i++)
-			player.inventory.armorInventory[i] = null;
-	}
+    @Override
+    public void onServerClick(EntityPlayerMP player) {
+        for (int i = 0; i < player.inventory.mainInventory.length; i++)
+            player.inventory.mainInventory[i] = null;
+        for (int i = 0; i < player.inventory.offHandInventory.length; i++)
+            player.inventory.offHandInventory[i] = null;
+        for (int i = 0; i < player.inventory.armorInventory.length; i++)
+            player.inventory.armorInventory[i] = null;
+    }
 
-	@Nonnull
-	@Override
-	public ITextComponent getUseNotification(EntityPlayerMP player) {
-		return new TextComponentString(String.format("%s used the %s button to delete their inventory.", player.getDisplayNameString(), getButtonId()));
-	}
+    @Nonnull
+    @Override
+    public ITextComponent getUseNotification(EntityPlayerMP player) {
+        return new TextComponentString(String.format("%s used the %s button to delete their inventory.", player.getDisplayNameString(), getButtonId()));
+    }
 
-	@Nullable
-	@Override
-	public List<? extends ITextComponent> getTooltip() {
-		return Collections.singletonList(new TextComponentTranslation("button.butt.delete.title"));
-	}
+    @Nullable
+    @Override
+    public List<? extends ITextComponent> getTooltip() {
+        return Collections.singletonList(new TextComponentTranslation("button.butt.delete.title"));
+    }
 }

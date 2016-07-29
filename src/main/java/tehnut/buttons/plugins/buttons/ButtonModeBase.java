@@ -7,27 +7,27 @@ import tehnut.buttons.api.button.utility.ButtonMode;
 
 public class ButtonModeBase<T extends Enum<T> & IMode> extends ButtonMode<T> {
 
-	private final String name;
+    private final String name;
 
-	public ButtonModeBase(Class<T> enumClass, String name, boolean serverRequired) {
-		super(WidgetTextures.BLANK, enumClass);
-		this.name = name;
+    public ButtonModeBase(Class<T> enumClass, String name, boolean serverRequired) {
+        super(WidgetTextures.BLANK, enumClass);
+        this.name = name;
 
-		if (serverRequired)
-			setServerRequired();
-	}
+        if (serverRequired)
+            setServerRequired();
+    }
 
-	public ButtonModeBase(Class<T> enumClass, String name) {
-		this(enumClass, name, false);
-	}
+    public ButtonModeBase(Class<T> enumClass, String name) {
+        this(enumClass, name, false);
+    }
 
-	@Override
-	public boolean requireElevatedPermissions() {
-		return isServerRequired();
-	}
+    @Override
+    public boolean requireElevatedPermissions() {
+        return isServerRequired();
+    }
 
-	@Override
-	public ResourceLocation getButtonId() {
-		return new ResourceLocation(Buttons.MODID, name);
-	}
+    @Override
+    public ResourceLocation getButtonId() {
+        return new ResourceLocation(Buttons.MODID, name);
+    }
 }

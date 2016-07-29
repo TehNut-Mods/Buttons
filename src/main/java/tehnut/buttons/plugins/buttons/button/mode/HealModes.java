@@ -15,45 +15,44 @@ import java.util.Collections;
 import java.util.List;
 
 public enum HealModes implements IMode {
-	HEALTH(WidgetTextures.HEART) {
-		@Override
-		public List<? extends ITextComponent> getTooltip() {
-			return Collections.singletonList(new TextComponentTranslation("button.butt.heal.health.title"));
-		}
+    HEALTH(WidgetTextures.HEART) {
+        @Override
+        public List<? extends ITextComponent> getTooltip() {
+            return Collections.singletonList(new TextComponentTranslation("button.butt.heal.health.title"));
+        }
 
-		@Override
-		public void onServerClick(EntityPlayerMP player) {
-			player.setHealth(player.getMaxHealth());
-		}
-	},
-	FEED(WidgetTextures.FOOD) {
-		@Override
-		public List<? extends ITextComponent> getTooltip() {
-			return Collections.singletonList(new TextComponentTranslation("button.butt.heal.feed.title"));
-		}
+        @Override
+        public void onServerClick(EntityPlayerMP player) {
+            player.setHealth(player.getMaxHealth());
+        }
+    },
+    FEED(WidgetTextures.FOOD) {
+        @Override
+        public List<? extends ITextComponent> getTooltip() {
+            return Collections.singletonList(new TextComponentTranslation("button.butt.heal.feed.title"));
+        }
 
-		@Override
-		public void onServerClick(EntityPlayerMP player) {
-			player.getFoodStats().addStats(20, 2.0F);
-		}
-	},
-	;
+        @Override
+        public void onServerClick(EntityPlayerMP player) {
+            player.getFoodStats().addStats(20, 2.0F);
+        }
+    },;
 
-	private final WidgetTexture widgetTexture;
+    private final WidgetTexture widgetTexture;
 
-	HealModes(WidgetTexture widgetTexture) {
-		this.widgetTexture = widgetTexture;
-	}
+    HealModes(WidgetTexture widgetTexture) {
+        this.widgetTexture = widgetTexture;
+    }
 
-	@Nonnull
-	@Override
-	public WidgetTexture getModeTexture() {
-		return widgetTexture;
-	}
+    @Nonnull
+    @Override
+    public WidgetTexture getModeTexture() {
+        return widgetTexture;
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumActionResult onClientClick(int mouseX, int mouseY) {
-		return EnumActionResult.SUCCESS;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumActionResult onClientClick(int mouseX, int mouseY) {
+        return EnumActionResult.SUCCESS;
+    }
 }

@@ -17,41 +17,40 @@ import java.util.Collections;
 import java.util.List;
 
 public enum GameModes implements IMode {
-	SURVIVAL(WidgetTextures.BLANK, GameType.SURVIVAL),
-	CREATIVE(WidgetTextures.BLANK, GameType.CREATIVE),
-	ADVENTURE(WidgetTextures.BLANK, GameType.ADVENTURE),
-	SPECTATOR(WidgetTextures.GLASSES, GameType.SPECTATOR),
-	;
+    SURVIVAL(WidgetTextures.BLANK, GameType.SURVIVAL),
+    CREATIVE(WidgetTextures.BLANK, GameType.CREATIVE),
+    ADVENTURE(WidgetTextures.BLANK, GameType.ADVENTURE),
+    SPECTATOR(WidgetTextures.GLASSES, GameType.SPECTATOR),;
 
-	private final WidgetTexture widgetTexture;
-	private final GameType gameType;
+    private final WidgetTexture widgetTexture;
+    private final GameType gameType;
 
-	GameModes(WidgetTexture widgetTexture, GameType gameType) {
-		this.widgetTexture = widgetTexture;
-		this.gameType = gameType;
-	}
+    GameModes(WidgetTexture widgetTexture, GameType gameType) {
+        this.widgetTexture = widgetTexture;
+        this.gameType = gameType;
+    }
 
-	@Nonnull
-	@Override
-	public WidgetTexture getModeTexture() {
-		return widgetTexture;
-	}
+    @Nonnull
+    @Override
+    public WidgetTexture getModeTexture() {
+        return widgetTexture;
+    }
 
-	@Nullable
-	@Override
-	public List<? extends ITextComponent> getTooltip() {
-		return Collections.singletonList(new TextComponentTranslation("gameMode." + gameType.getName()));
-	}
+    @Nullable
+    @Override
+    public List<? extends ITextComponent> getTooltip() {
+        return Collections.singletonList(new TextComponentTranslation("gameMode." + gameType.getName()));
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public EnumActionResult onClientClick(int mouseX, int mouseY) {
-		return EnumActionResult.SUCCESS;
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public EnumActionResult onClientClick(int mouseX, int mouseY) {
+        return EnumActionResult.SUCCESS;
+    }
 
-	@Override
-	public void onServerClick(EntityPlayerMP player) {
-		player.setGameType(gameType);
-		player.addChatComponentMessage(new TextComponentTranslation("gameMode.changed", new TextComponentTranslation("gameMode." + gameType.getName())));
-	}
+    @Override
+    public void onServerClick(EntityPlayerMP player) {
+        player.setGameType(gameType);
+        player.addChatComponentMessage(new TextComponentTranslation("gameMode.changed", new TextComponentTranslation("gameMode." + gameType.getName())));
+    }
 }

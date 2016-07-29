@@ -23,66 +23,66 @@ import java.util.List;
 
 public class GuiButtonWidget extends GuiButton {
 
-	private final Button button;
+    private final Button button;
 
-	public GuiButtonWidget(int x, int y, Button button) {
-		super(0, x, y, 20, 20, "");
+    public GuiButtonWidget(int x, int y, Button button) {
+        super(0, x, y, 20, 20, "");
 
-		this.button = button;
-	}
+        this.button = button;
+    }
 
-	@Override
-	public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-		if (visible) {
-			this.hovered = ClientHelper.isMouseBetween(mouseX, mouseY, xPosition, yPosition, 19, 19);
+    @Override
+    public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+        if (visible) {
+            this.hovered = ClientHelper.isMouseBetween(mouseX, mouseY, xPosition, yPosition, 19, 19);
 
-			RenderHelper.enableGUIStandardItemLighting();
-			GlStateManager.enableBlend();
-			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-			GlStateManager.disableLighting();
-			WidgetTexture background = ButtonsAPI.BUTTON_BACKGROUND_DEFAULT;
-			if (hovered)
-				background = ButtonsAPI.BUTTON_BACKGROUND_ACTIVE;
-			mc.renderEngine.bindTexture(background.getTextureLocation());
-			ClientHelper.drawTexture(0, xPosition, yPosition, background);
-			button.drawButton(xPosition, yPosition);
-		}
-	}
+            RenderHelper.enableGUIStandardItemLighting();
+            GlStateManager.enableBlend();
+            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+            GlStateManager.disableLighting();
+            WidgetTexture background = ButtonsAPI.BUTTON_BACKGROUND_DEFAULT;
+            if (hovered)
+                background = ButtonsAPI.BUTTON_BACKGROUND_ACTIVE;
+            mc.renderEngine.bindTexture(background.getTextureLocation());
+            ClientHelper.drawTexture(0, xPosition, yPosition, background);
+            button.drawButton(xPosition, yPosition);
+        }
+    }
 
-	public void drawButtonTooltips(int mouseX, int mouseY) {
-		if (visible && getButton().getTooltip() != null) {
-			ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
-			List<String> tooltips = new ArrayList<String>();
-			for (ITextComponent textComponent : getButton().getTooltip())
-				tooltips.add(textComponent.getFormattedText());
-			GuiUtils.drawHoveringText(tooltips, mouseX, mouseY, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), -1, Minecraft.getMinecraft().fontRendererObj);
-		}
-	}
+    public void drawButtonTooltips(int mouseX, int mouseY) {
+        if (visible && getButton().getTooltip() != null) {
+            ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
+            List<String> tooltips = new ArrayList<String>();
+            for (ITextComponent textComponent : getButton().getTooltip())
+                tooltips.add(textComponent.getFormattedText());
+            GuiUtils.drawHoveringText(tooltips, mouseX, mouseY, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), -1, Minecraft.getMinecraft().fontRendererObj);
+        }
+    }
 
-	@Override
-	public void playPressSound(SoundHandler soundHandlerIn) {
-		// No-op
-	}
+    @Override
+    public void playPressSound(SoundHandler soundHandlerIn) {
+        // No-op
+    }
 
-	@Override
-	public void mouseReleased(int mouseX, int mouseY) {
-		super.mouseReleased(mouseX, mouseY);
+    @Override
+    public void mouseReleased(int mouseX, int mouseY) {
+        super.mouseReleased(mouseX, mouseY);
 
-		if (!isMouseOver())
-			return;
+        if (!isMouseOver())
+            return;
 
-		EnumActionResult result = button.onClientClick(mouseX, mouseY);
-		Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+        EnumActionResult result = button.onClientClick(mouseX, mouseY);
+        Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
 
-		if (result == EnumActionResult.SUCCESS && button.isServerRequired())
-			Buttons.NETWORK_INSTANCE.sendToServer(new MessageButtonClicked(button));
-	}
+        if (result == EnumActionResult.SUCCESS && button.isServerRequired())
+            Buttons.NETWORK_INSTANCE.sendToServer(new MessageButtonClicked(button));
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public Button getButton() {
-		return button;
-	}
+    public Button getButton() {
+        return button;
+    }
 }
