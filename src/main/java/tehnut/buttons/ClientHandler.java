@@ -22,9 +22,4 @@ public class ClientHandler {
     public void onGuiDrawPost(GuiScreenEvent.DrawScreenEvent.Post event) {
         buttonListOverlay.drawScreenPost(event.getGui(), event.getGui().buttonList, event.getMouseX(), event.getMouseY());
     }
-
-    @SubscribeEvent
-    public void onPotionShiftEvent(GuiScreenEvent.PotionShiftEvent event) {
-        event.setCanceled(true);
-    }
 }
