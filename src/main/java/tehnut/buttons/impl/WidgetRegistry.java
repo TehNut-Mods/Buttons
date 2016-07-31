@@ -16,14 +16,14 @@ public class WidgetRegistry implements IWidgetRegistry {
         // No-op
     }
 
-    private final Map<ResourceLocation, Button> buttons = new LinkedHashMap<ResourceLocation, Button>();
+    private final Map<ResourceLocation, Button> utilityButtons = new LinkedHashMap<ResourceLocation, Button>();
 
     @Override
-    public void addButton(Button button) {
-        buttons.put(button.getButtonId(), button);
+    public void addUtilityButton(Button button) {
+        utilityButtons.put(button.getButtonId(), button);
     }
 
-    public Map<ResourceLocation, Button> getButtons() {
-        return ImmutableMap.copyOf(buttons);
+    public Map<ResourceLocation, Button> getUtilityButtons() {
+        return ImmutableMap.copyOf(utilityButtons);
     }
 }

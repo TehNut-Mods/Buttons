@@ -15,5 +15,5 @@ public interface IWidgetRegistry {
      *
      * @param button - The button to register.
      */
-    void addButton(Button button);
+    void addUtilityButton(Button button);
 }

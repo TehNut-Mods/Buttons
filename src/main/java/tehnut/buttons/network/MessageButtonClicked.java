@@ -31,7 +31,7 @@ public class MessageButtonClicked implements IMessage {
 
     @Override
     public void fromBytes(ByteBuf buf) {
-        this.button = WidgetRegistry.INSTANCE.getButtons().get(new ResourceLocation(ByteBufUtils.readUTF8String(buf)));
+        this.button = WidgetRegistry.INSTANCE.getUtilityButtons().get(new ResourceLocation(ByteBufUtils.readUTF8String(buf)));
         this.mode = buf.readInt();
     }
 

@@ -11,11 +11,11 @@ import tehnut.buttons.impl.WidgetRegistry;
 
 import java.util.List;
 
-public class ButtonListOverlay implements IButtonListOverlay {
+public class UtilityButtonListOverlay implements IButtonListOverlay {
 
     private static final int BUTTON_WIDTH = 22;
 
-    private int columns = 0;
+    private int columns;
     private boolean open;
 
     public void init(GuiScreen screen) {
@@ -43,8 +43,8 @@ public class ButtonListOverlay implements IButtonListOverlay {
         int yOffset = 0;
         int columnIndex = 0;
 
-        for (Button button : WidgetRegistry.INSTANCE.getButtons().values()) {
-            GuiButtonWidget guiButton = new GuiButtonWidget(2 + xOffset, 2 + yOffset, button);
+        for (Button button : WidgetRegistry.INSTANCE.getUtilityButtons().values()) {
+            GuiButtonUtility guiButton = new GuiButtonUtility(2 + xOffset, 2 + yOffset, button);
             buttons.add(guiButton);
             guiButton.setId(buttons.indexOf(guiButton) + 5);
             xOffset += BUTTON_WIDTH;
@@ -60,11 +60,11 @@ public class ButtonListOverlay implements IButtonListOverlay {
 
     public void drawScreenPost(GuiScreen screen, List<GuiButton> buttons, int mouseX, int mouseY) {
         for (GuiButton button : buttons) {
-            if (button instanceof GuiButtonWidget && button.isMouseOver()) {
+            if (button instanceof GuiButtonUtility && button.isMouseOver()) {
                 int modMouseY = mouseY;
                 if (modMouseY < 16)
                     modMouseY += 16 - modMouseY;
-                ((GuiButtonWidget) button).drawButtonTooltips(mouseX, modMouseY);
+                ((GuiButtonUtility) button).drawButtonTooltips(mouseX, modMouseY);
             }
         }
     }

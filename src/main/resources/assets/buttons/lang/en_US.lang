@@ -11,6 +11,9 @@ button.butt.weather.sun.title=Set sunny
 button.butt.weather.rain.title=Set rainy
 button.butt.delete.title=Delete
 
+save.butt.save=Save Slot %d
+save.butt.load=Load Slot %d
+
 # Info
 button.butt.mode=Shift Click to cycle
 

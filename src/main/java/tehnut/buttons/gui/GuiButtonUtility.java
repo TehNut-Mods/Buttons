@@ -11,6 +11,8 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fml.client.config.GuiUtils;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.buttons.Buttons;
 import tehnut.buttons.api.ClientHelper;
 import tehnut.buttons.api.ButtonsAPI;
@@ -21,11 +23,12 @@ import tehnut.buttons.network.MessageButtonClicked;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GuiButtonWidget extends GuiButton {
+@SideOnly(Side.CLIENT)
+public class GuiButtonUtility extends GuiButton {
 
     private final Button button;
 
-    public GuiButtonWidget(int x, int y, Button button) {
+    public GuiButtonUtility(int x, int y, Button button) {
         super(0, x, y, 20, 20, "");
 
         this.button = button;
