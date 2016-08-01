@@ -15,6 +15,7 @@ import tehnut.buttons.Buttons;
 import tehnut.buttons.api.button.utility.Button;
 import tehnut.buttons.api.button.utility.ButtonMode;
 import tehnut.buttons.impl.WidgetRegistry;
+import tehnut.buttons.util.Utils;
 
 public class MessageButtonClicked implements IMessage {
 
@@ -63,7 +64,7 @@ public class MessageButtonClicked implements IMessage {
                         ((ButtonMode) message.getButton()).setMode(((ButtonMode) message.getButton()).getModes()[message.getMode()]);
 
                     if (message.getButton().requireElevatedPermissions())
-                        canUse = ctx.getServerHandler().playerEntity.canCommandSenderUseCommand(2, "");
+                        canUse = Utils.hasPermission(ctx.getServerHandler().playerEntity);
 
                     if (canUse) {
                         message.getButton().onServerClick(ctx.getServerHandler().playerEntity);

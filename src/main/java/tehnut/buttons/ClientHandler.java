@@ -1,5 +1,6 @@
 package tehnut.buttons;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -9,6 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.buttons.config.ConfigHandler;
 import tehnut.buttons.gui.SaveButtonListOverlay;
 import tehnut.buttons.gui.UtilityButtonListOverlay;
+import tehnut.buttons.util.Utils;
 
 @SideOnly(Side.CLIENT)
 public class ClientHandler {
@@ -21,7 +23,7 @@ public class ClientHandler {
         if (event.getGui() instanceof GuiContainer) {
             if (ConfigHandler.enableUtilityButtons())
                 utilityButtonListOverlay.init(event.getGui());
-            if (ConfigHandler.enableSaveButtons())
+            if (ConfigHandler.enableSaveButtons() && Utils.hasPermission(Minecraft.getMinecraft().thePlayer))
                 saveButtonListOverlay.init(event.getGui());
         }
     }

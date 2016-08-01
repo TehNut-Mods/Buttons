@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import tehnut.buttons.util.Utils;
 
 public class MessageLoadInventory implements IMessage {
 
@@ -36,7 +37,8 @@ public class MessageLoadInventory implements IMessage {
 
         @Override
         public IMessage onMessage(MessageLoadInventory message, MessageContext ctx) {
-            ctx.getServerHandler().playerEntity.inventory.readFromNBT(message.getInvTag().getTagList("inv", 10));
+            if (Utils.hasPermission(ctx.getServerHandler().playerEntity))
+                ctx.getServerHandler().playerEntity.inventory.readFromNBT(message.getInvTag().getTagList("inv", 10));
             return null;
         }
     }
