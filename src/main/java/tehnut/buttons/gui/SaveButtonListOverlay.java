@@ -4,13 +4,14 @@ import com.google.common.base.Stopwatch;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.buttons.Buttons;
 import tehnut.buttons.api.button.utility.IButtonListOverlay;
-import tehnut.buttons.config.ConfigHandler;
+import tehnut.buttons.config.SaveCacheHandler;
+import tehnut.buttons.gui.button.GuiButtonDeleteSave;
+import tehnut.buttons.gui.button.GuiButtonSave;
 
 import java.util.List;
 
@@ -46,9 +47,9 @@ public class SaveButtonListOverlay implements IButtonListOverlay {
             GuiButtonSave saveButton = new GuiButtonSave(2, 2 + yOffset, i, container);
             buttons.add(saveButton);
             saveButton.setId(buttons.indexOf(saveButton) + 5);
-//            NBTTagCompound invTag = ConfigHandler.getSaveSlot(i);
-//            if (invTag != null)
-//                saveButton.setSavedInventory(invTag);
+            NBTTagCompound invTag = SaveCacheHandler.getSaveSlot(i);
+            if (invTag != null)
+                saveButton.setSavedInventory(invTag);
             GuiButtonDeleteSave deleteButton = new GuiButtonDeleteSave(container.guiLeft - 37, 2 + yOffset, saveButton);
             buttons.add(deleteButton);
             deleteButton.setId(buttons.indexOf(deleteButton) + 5);

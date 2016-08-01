@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import tehnut.buttons.config.ConfigHandler;
 import tehnut.buttons.network.MessageButtonClicked;
 import tehnut.buttons.network.MessageDeleteItem;
+import tehnut.buttons.network.MessageLoadInventory;
 import tehnut.buttons.proxy.CommonProxy;
 
 import java.io.File;
@@ -38,6 +39,7 @@ public class Buttons {
         ConfigHandler.init(new File(configDir, NAME + ".cfg"));
         NETWORK_INSTANCE.registerMessage(MessageButtonClicked.Handler.class, MessageButtonClicked.class, 0, Side.SERVER);
         NETWORK_INSTANCE.registerMessage(MessageDeleteItem.Handler.class, MessageDeleteItem.class, 1, Side.SERVER);
+        NETWORK_INSTANCE.registerMessage(MessageLoadInventory.Handler.class, MessageLoadInventory.class, 2, Side.SERVER);
 
         proxy.preInit(event);
     }

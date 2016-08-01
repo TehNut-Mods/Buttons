@@ -1,4 +1,4 @@
-package tehnut.buttons.gui;
+package tehnut.buttons.gui.button;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -8,7 +8,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraftforge.fml.client.config.GuiButtonExt;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import tehnut.buttons.config.ConfigHandler;
+import tehnut.buttons.config.SaveCacheHandler;
 
 @SideOnly(Side.CLIENT)
 public class GuiButtonDeleteSave extends GuiButtonExt {
@@ -36,7 +36,7 @@ public class GuiButtonDeleteSave extends GuiButtonExt {
 
         Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
         saveButton.setSavedInventory(null);
-//        ConfigHandler.setSaveSlot(saveButton.getButtonNumber(), null);
+        SaveCacheHandler.setSaveSlot(saveButton.getButtonNumber(), null);
         visible = false;
     }
 

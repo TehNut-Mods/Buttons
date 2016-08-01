@@ -1,4 +1,4 @@
-package tehnut.buttons.gui;
+package tehnut.buttons.gui.button;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;

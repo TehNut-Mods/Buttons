@@ -7,6 +7,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import tehnut.buttons.Buttons;
 import tehnut.buttons.api.button.utility.Button;
 import tehnut.buttons.api.button.utility.IButtonListOverlay;
+import tehnut.buttons.gui.button.GuiButtonUtility;
 import tehnut.buttons.impl.WidgetRegistry;
 
 import java.util.List;

@@ -29,6 +29,6 @@ public class ButtonClose extends ButtonBase {
     @Nullable
     @Override
     public List<? extends ITextComponent> getTooltip() {
-        return Collections.singletonList(new TextComponentTranslation("button.jew.exit.title"));
+        return Collections.singletonList(new TextComponentTranslation("button.butt.exit.title"));
     }
 }

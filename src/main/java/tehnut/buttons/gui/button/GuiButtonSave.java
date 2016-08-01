@@ -1,4 +1,4 @@
-package tehnut.buttons.gui;
+package tehnut.buttons.gui.button;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -15,9 +15,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.wrapper.PlayerInvWrapper;
-import tehnut.buttons.config.ConfigHandler;
+import tehnut.buttons.Buttons;
+import tehnut.buttons.config.SaveCacheHandler;
+import tehnut.buttons.network.MessageLoadInventory;
 
 @SideOnly(Side.CLIENT)
 public class GuiButtonSave extends GuiButton {
@@ -88,11 +88,10 @@ public class GuiButtonSave extends GuiButton {
             NBTTagCompound invTag = new NBTTagCompound();
             invTag.setTag("inv", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(itemHandler, null));
             setSavedInventory(invTag);
-//            ConfigHandler.setSaveSlot(getButtonNumber(), invTag);
+            SaveCacheHandler.setSaveSlot(getButtonNumber(), invTag);
             deleteButton.visible = true;
         } else {
-            ItemStackHandler itemHandler = new ItemStackHandler(0);
-
+            Buttons.NETWORK_INSTANCE.sendToServer(new MessageLoadInventory(getSavedInventory()));
         }
     }
 
