@@ -23,13 +23,16 @@ public class SaveCacheHandler {
     private static String[] saveSlots = {
         "", "", "", "", ""
     };
+    private static String[] slotNames = {
+        "", "", "", "", ""
+    };
 
     public static void writeSaveConfig() {
         try {
             if (!CONFIG_FILE.exists())
                 CONFIG_FILE.createNewFile();
 
-            String json = GSON.toJson(saveSlots);
+            String json = GSON.toJson(new StringArrayPair(saveSlots, slotNames));
             FileWriter writer = new FileWriter(CONFIG_FILE);
             writer.write(json);
             writer.close();
@@ -43,7 +46,9 @@ public class SaveCacheHandler {
             if (!CONFIG_FILE.exists())
                 return;
 
-            saveSlots = GSON.fromJson(new FileReader(CONFIG_FILE), String[].class);
+            StringArrayPair arrayPair = GSON.fromJson(new FileReader(CONFIG_FILE), StringArrayPair.class);
+            saveSlots = arrayPair.saveSlots;
+            slotNames = arrayPair.slotNames;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,12 +59,31 @@ public class SaveCacheHandler {
         writeSaveConfig();
     }
 
+    public static void setSlotName(int slotNumber, String slotName) {
+        slotNames[slotNumber] = slotName;
+        writeSaveConfig();
+    }
+
     @Nullable
     public static NBTTagCompound getSaveSlot(int slotNumber) {
         try {
             return JsonToNBT.getTagFromJson(saveSlots[slotNumber]);
         } catch (Exception e) {
             return null;
+        }
+    }
+
+    public static String getSlotName(int slotNumber) {
+        return slotNames[slotNumber];
+    }
+
+    private static class StringArrayPair {
+        private String[] saveSlots;
+        private String[] slotNames;
+
+        public StringArrayPair(String[] saveSlots, String[] slotNames) {
+            this.saveSlots = saveSlots;
+            this.slotNames = slotNames;
         }
     }
 }

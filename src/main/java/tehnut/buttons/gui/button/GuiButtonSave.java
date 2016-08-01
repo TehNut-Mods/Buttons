@@ -1,5 +1,6 @@
 package tehnut.buttons.gui.button;
 
+import com.google.common.base.Strings;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
@@ -11,16 +12,19 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraftforge.fml.client.config.GuiButtonExt;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import tehnut.buttons.Buttons;
+import tehnut.buttons.config.ConfigHandler;
 import tehnut.buttons.config.SaveCacheHandler;
 import tehnut.buttons.network.MessageLoadInventory;
 
 @SideOnly(Side.CLIENT)
-public class GuiButtonSave extends GuiButton {
+public class GuiButtonSave extends GuiButtonExt {
 
     private NBTTagCompound savedInventory = null;
     private int buttonNumber;
@@ -63,7 +67,7 @@ public class GuiButtonSave extends GuiButton {
             if (savedInventory == null)
                 toDraw = I18n.format("save.butt.save", buttonNumber + 1);
             else
-                toDraw = I18n.format("save.butt.load", buttonNumber + 1);
+                toDraw = SaveCacheHandler.getSlotName(buttonNumber);
 
             drawCenteredString(fontrenderer, toDraw, xPosition + width / 2, yPosition + (height - 8) / 2, stringColor);
         }
@@ -84,11 +88,11 @@ public class GuiButtonSave extends GuiButton {
         Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
         EntityPlayer player = Minecraft.getMinecraft().thePlayer;
         if (getSavedInventory() == null) {
-            IItemHandler itemHandler = player.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
             NBTTagCompound invTag = new NBTTagCompound();
-            invTag.setTag("inv", CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.writeNBT(itemHandler, null));
+            invTag.setTag("inv", player.inventory.writeToNBT(new NBTTagList()));
             setSavedInventory(invTag);
             SaveCacheHandler.setSaveSlot(getButtonNumber(), invTag);
+            SaveCacheHandler.setSlotName(getButtonNumber(), I18n.format("save.butt.load", getButtonNumber() + 1));
             deleteButton.visible = true;
         } else {
             Buttons.NETWORK_INSTANCE.sendToServer(new MessageLoadInventory(getSavedInventory()));

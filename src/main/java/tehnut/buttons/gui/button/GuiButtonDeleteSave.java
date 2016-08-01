@@ -37,6 +37,7 @@ public class GuiButtonDeleteSave extends GuiButtonExt {
         Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
         saveButton.setSavedInventory(null);
         SaveCacheHandler.setSaveSlot(saveButton.getButtonNumber(), null);
+        SaveCacheHandler.setSlotName(saveButton.getButtonNumber(), "");
         visible = false;
     }
 

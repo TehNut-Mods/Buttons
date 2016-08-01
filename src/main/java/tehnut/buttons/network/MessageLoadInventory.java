@@ -1,17 +1,11 @@
 package tehnut.buttons.network;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.items.wrapper.PlayerInvWrapper;
 
 public class MessageLoadInventory implements IMessage {
 
@@ -42,23 +36,7 @@ public class MessageLoadInventory implements IMessage {
 
         @Override
         public IMessage onMessage(MessageLoadInventory message, MessageContext ctx) {
-            NBTTagList invItems = message.getInvTag().getTagList("inv", 10);
-            PlayerInvWrapper playerInv = new PlayerInvWrapper(ctx.getServerHandler().playerEntity.inventory);
-            for (int i = 0; i < invItems.tagCount(); i++) {
-                NBTTagCompound tag = invItems.getCompoundTagAt(i);
-                int slot = tag.getInteger("Slot");
-                Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(tag.getString("id")));
-                int count = tag.getInteger("Count");
-                int meta = tag.getInteger("Damage");
-                NBTTagCompound itemTag = tag.getCompoundTag("tag");
-
-                ItemStack built = new ItemStack(item, count, meta);
-                if (!itemTag.hasNoTags())
-                    built.setTagCompound(itemTag);
-
-                playerInv.setStackInSlot(slot, built);
-            }
-
+            ctx.getServerHandler().playerEntity.inventory.readFromNBT(message.getInvTag().getTagList("inv", 10));
             return null;
         }
     }
