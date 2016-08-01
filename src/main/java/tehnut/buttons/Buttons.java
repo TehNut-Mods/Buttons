@@ -15,7 +15,7 @@ import tehnut.buttons.proxy.CommonProxy;
 
 import java.io.File;
 
-@Mod(modid = Buttons.MODID, name = Buttons.NAME, version = Buttons.VERSION)
+@Mod(modid = Buttons.MODID, name = Buttons.NAME, version = Buttons.VERSION, guiFactory = "tehnut.buttons.gui.config.GuiFactoryButtons")
 public class Buttons {
 
     public static final String MODID = "buttons";
