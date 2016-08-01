@@ -1,17 +1,23 @@
 package tehnut.buttons.gui;
 
 import com.google.common.base.Stopwatch;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.buttons.Buttons;
 import tehnut.buttons.api.button.utility.Button;
 import tehnut.buttons.api.button.utility.IButtonListOverlay;
+import tehnut.buttons.config.ConfigHandler;
 import tehnut.buttons.gui.button.GuiButtonUtility;
 import tehnut.buttons.impl.WidgetRegistry;
+import tehnut.buttons.util.Utils;
 
 import java.util.List;
 
+@SideOnly(Side.CLIENT)
 public class UtilityButtonListOverlay implements IButtonListOverlay {
 
     private static final int BUTTON_WIDTH = 22;
@@ -45,6 +51,9 @@ public class UtilityButtonListOverlay implements IButtonListOverlay {
         int columnIndex = 0;
 
         for (Button button : WidgetRegistry.INSTANCE.getUtilityButtons().values()) {
+            if (ConfigHandler.shouldHideUnusableButtons() && button.requireElevatedPermissions() && !Utils.hasPermission(Minecraft.getMinecraft().thePlayer))
+                continue;
+
             GuiButtonUtility guiButton = new GuiButtonUtility(2 + xOffset, 2 + yOffset, button);
             buttons.add(guiButton);
             guiButton.setId(buttons.indexOf(guiButton) + 5);

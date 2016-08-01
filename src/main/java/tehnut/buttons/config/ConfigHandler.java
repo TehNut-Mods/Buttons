@@ -28,6 +28,12 @@ public class ConfigHandler {
         return enableSaveButtons;
     }
 
+    private static boolean hideUnusableButtons;
+
+    public static boolean shouldHideUnusableButtons() {
+        return hideUnusableButtons;
+    }
+
     public static void init(File file) {
         config = new Configuration(file);
         syncConfig();
@@ -43,6 +49,10 @@ public class ConfigHandler {
         categories.add(category);
         enableUtiltiyButtons = config.getBoolean("enableUtilityButtons", category, true, "Enables utility buttons at the top left of the screen.");
         enableSaveButtons = config.getBoolean("enableSaveButtons", category, true, "Enables the inventory save buttons.");
+
+        category = "modules.utilitybuttons";
+        categories.add(category);
+        hideUnusableButtons = config.getBoolean("hideUnusableButtons", category, false, "Hides buttons that require permissions that you don't have.");
 
         if (config.hasChanged())
             config.save();
