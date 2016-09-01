@@ -13,6 +13,7 @@ public class ButtonsPlugin extends IWidgetPlugin.Base {
     @Override
     public void register(IWidgetRegistry widgetRegistry) {
         widgetRegistry.addUtilityButton(new ButtonClose());
+        widgetRegistry.addUtilityButton(new ButtonConfig());
         widgetRegistry.addUtilityButton(new ButtonGamemode());
         widgetRegistry.addUtilityButton(new ButtonModeBase<TimeModes>(TimeModes.class, "button_time", true));
         widgetRegistry.addUtilityButton(new ButtonModeBase<HealModes>(HealModes.class, "button_heal", true));
