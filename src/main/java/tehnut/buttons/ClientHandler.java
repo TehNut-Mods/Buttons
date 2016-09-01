@@ -23,7 +23,8 @@ public class ClientHandler {
         if (event.getGui() instanceof GuiContainer) {
             if (ConfigHandler.enableUtilityButtons())
                 utilityButtonListOverlay.init(event.getGui());
-            if (ConfigHandler.enableSaveButtons() && Utils.hasPermission(Minecraft.getMinecraft().thePlayer))
+            // Disabled until feature is complete
+            if (ConfigHandler.enableSaveButtons() && Utils.hasPermission(Minecraft.getMinecraft().thePlayer) && false)
                 saveButtonListOverlay.init(event.getGui());
         }
     }
