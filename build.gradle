@@ -67,6 +67,8 @@ processResources {
         exclude '**/*.info'
         exclude '**/*.properties'
     }
+
+    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 jar {
