@@ -83,13 +83,21 @@ jar {
     }
 }
 
-// add a javadoc jar
+// API jar
+task apiJar(type: Jar) {
+    from sourceSets.main.allSource
+    from sourceSets.main.output
+    include 'tehnut/buttons/api/**/*'
+    classifier = 'api'
+}
+
+// Javadoc jar
 task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
     classifier = 'javadoc'
 }
 
-tasks.build.dependsOn sourceJar, javadocJar
+tasks.build.dependsOn apiJar, sourceJar, javadocJar
 
 tasks.withType(JavaCompile) { task ->
     task.options.encoding = 'UTF-8'
@@ -102,6 +110,7 @@ publishing {
             artifact jar
             artifact sourceJar
             artifact javadocJar
+            artifact apiJar
         }
     }
     repositories {
@@ -149,5 +158,6 @@ curseforge {
 
         addArtifact sourceJar
         addArtifact javadocJar
+        addArtifact apiJar
     }
 }
