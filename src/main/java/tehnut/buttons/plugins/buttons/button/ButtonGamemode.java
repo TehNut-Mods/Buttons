@@ -2,6 +2,8 @@ package tehnut.buttons.plugins.buttons.button;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.buttons.plugins.buttons.ButtonModeBase;
 import tehnut.buttons.plugins.buttons.button.mode.GameModes;
 
@@ -15,6 +17,7 @@ public class ButtonGamemode extends ButtonModeBase<GameModes> {
         setServerRequired();
     }
 
+    @SideOnly(Side.CLIENT)
     @Override
     public void drawButton(int x, int y) {
         switch (getMode()) {
@@ -34,11 +37,12 @@ public class ButtonGamemode extends ButtonModeBase<GameModes> {
 
     }
 
+    @SideOnly(Side.CLIENT)
     private void drawScaledText(String text, int x, int y) {
         GlStateManager.pushMatrix();
         GlStateManager.scale(1.5, 1.5, 1.5);
         GlStateManager.translate(-4, 2, 0);
-        Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(text, x, y, Color.WHITE.getRGB());
+        Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(text, x - 7, y, Color.WHITE.getRGB());
         GlStateManager.popMatrix();
     }
 }
