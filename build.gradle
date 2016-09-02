@@ -23,8 +23,8 @@ if (System.getenv('BUILD_NUMBER') != null)
     build_number = System.getenv('BUILD_NUMBER')
 
 group = package_group
-archivesBaseName = mod_name
-version = "${mc_version}-${mod_version}-${build_number}"
+archivesBaseName = "${mod_name}-${mc_version}"
+version = "${mod_version}-${build_number}"
 
 import org.ajoberstar.grgit.Grgit
 
@@ -80,7 +80,7 @@ jar {
                 "Git-Hash": gitHash,
                 "Built-on": "${mc_version}-${forge_version}"
         )
-        attributes 'FMLAT': 'jew_at.cfg'
+        attributes 'FMLAT': 'butt_at.cfg'
     }
 }
 
@@ -146,7 +146,7 @@ curseforge {
     project {
         id = "${curse_id}"
 		changelog = getChangelogText()
-        releaseType = 'release'
+        releaseType = 'alpha'
 
         addArtifact sourceJar
         addArtifact javadocJar

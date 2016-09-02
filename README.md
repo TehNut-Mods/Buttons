@@ -1,4 +1,4 @@
-# Buttons
+# Buttons [![](http://cf.way2muchnoise.eu/full_buttonz_downloads.svg)](https://minecraft.curseforge.com/projects/buttonz)
 
 Buttons is a mod that adds utility buttons to the left side of your inventory screen. 
 
@@ -13,7 +13,7 @@ This means:
 
 ## Download
 
-Downloads can be found on [CurseForge](CURSE.LINK.HERE).
+Downloads can be found on [CurseForge](https://minecraft.curseforge.com/projects/buttonz).
 
 ## Developing Addons
 
