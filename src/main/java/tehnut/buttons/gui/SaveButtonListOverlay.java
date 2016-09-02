@@ -12,6 +12,7 @@ import tehnut.buttons.api.button.utility.IButtonListOverlay;
 import tehnut.buttons.config.SaveCacheHandler;
 import tehnut.buttons.gui.button.GuiButtonDeleteSave;
 import tehnut.buttons.gui.button.GuiButtonSave;
+import tehnut.buttons.util.Reflectors;
 
 import java.util.List;
 
@@ -25,14 +26,14 @@ public class SaveButtonListOverlay implements IButtonListOverlay {
             Stopwatch stopwatch = Stopwatch.createStarted();
             GuiContainer container = (GuiContainer) screen;
 
-            if (container.guiLeft < 24) {
+            if (Reflectors._GUI_LEFT.get(container) < 24) {
                 close();
                 return;
             }
 
             this.open = true;
 
-            drawScreen(screen, screen.buttonList);
+            drawScreen(screen, Reflectors._BUTTON_LIST.get(screen));
             Buttons.debug("Initialized button list in {}.", stopwatch.stop());
         } else {
             close();
@@ -50,7 +51,7 @@ public class SaveButtonListOverlay implements IButtonListOverlay {
             NBTTagCompound invTag = SaveCacheHandler.getSaveSlot(i);
             if (invTag != null)
                 saveButton.setSavedInventory(invTag);
-            GuiButtonDeleteSave deleteButton = new GuiButtonDeleteSave(container.guiLeft - 37, 2 + yOffset, saveButton);
+            GuiButtonDeleteSave deleteButton = new GuiButtonDeleteSave(Reflectors._GUI_LEFT.get(container) - 37, 2 + yOffset, saveButton);
             buttons.add(deleteButton);
             deleteButton.setId(buttons.indexOf(deleteButton) + 5);
             saveButton.setDeleteButton(deleteButton);

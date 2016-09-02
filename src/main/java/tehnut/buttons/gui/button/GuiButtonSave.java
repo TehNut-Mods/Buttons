@@ -22,6 +22,7 @@ import tehnut.buttons.Buttons;
 import tehnut.buttons.config.ConfigHandler;
 import tehnut.buttons.config.SaveCacheHandler;
 import tehnut.buttons.network.MessageLoadInventory;
+import tehnut.buttons.util.Reflectors;
 
 @SideOnly(Side.CLIENT)
 public class GuiButtonSave extends GuiButtonExt {
@@ -35,7 +36,7 @@ public class GuiButtonSave extends GuiButtonExt {
 
         this.buttonNumber = buttonNumber;
 
-        setWidth(container.guiLeft - 40);
+        setWidth(Reflectors._GUI_LEFT.get(container) - 40);
     }
 
     @Override

@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import tehnut.buttons.config.ConfigHandler;
 import tehnut.buttons.gui.SaveButtonListOverlay;
 import tehnut.buttons.gui.UtilityButtonListOverlay;
+import tehnut.buttons.util.Reflectors;
 import tehnut.buttons.util.Utils;
 
 @SideOnly(Side.CLIENT)
@@ -32,7 +33,7 @@ public class ClientHandler {
     @SubscribeEvent
     public void onGuiDrawPost(GuiScreenEvent.DrawScreenEvent.Post event) {
         if (ConfigHandler.enableUtilityButtons())
-            utilityButtonListOverlay.drawScreenPost(event.getGui(), event.getGui().buttonList, event.getMouseX(), event.getMouseY());
+            utilityButtonListOverlay.drawScreenPost(event.getGui(), Reflectors._BUTTON_LIST.get(event.getGui()), event.getMouseX(), event.getMouseY());
     }
 
     @SubscribeEvent

@@ -13,6 +13,7 @@ import tehnut.buttons.api.button.utility.IButtonListOverlay;
 import tehnut.buttons.config.ConfigHandler;
 import tehnut.buttons.gui.button.GuiButtonUtility;
 import tehnut.buttons.impl.WidgetRegistry;
+import tehnut.buttons.util.Reflectors;
 import tehnut.buttons.util.Utils;
 
 import java.util.List;
@@ -30,15 +31,15 @@ public class UtilityButtonListOverlay implements IButtonListOverlay {
             Stopwatch stopwatch = Stopwatch.createStarted();
             GuiContainer container = (GuiContainer) screen;
 
-            if (container.guiLeft < 24) {
+            if (Reflectors._GUI_LEFT.get(container) < 24) {
                 close();
                 return;
             }
 
             this.open = true;
-            this.columns = (int) Math.floor((double) container.guiLeft / 24);
+            this.columns = (int) Math.floor((double) Reflectors._GUI_LEFT.get(container) / 24);
 
-            drawScreen(screen, screen.buttonList);
+            drawScreen(screen, Reflectors._BUTTON_LIST.get(screen));
             Buttons.debug("Initialized button list in {}.", stopwatch.stop());
         } else {
             close();

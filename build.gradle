@@ -67,8 +67,6 @@ processResources {
         exclude '**/*.info'
         exclude '**/*.properties'
     }
-
-    rename '(.+_at.cfg)', 'META-INF/$1'
 }
 
 jar {
@@ -82,7 +80,6 @@ jar {
                 "Git-Hash": gitHash,
                 "Built-on": "${mc_version}-${forge_version}"
         )
-        attributes 'FMLAT': 'butt_at.cfg'
     }
 }
 
